@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="utf-8">
+		<title>{{ titulo }} | Tienda Electrónica</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+		<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+	</head>
+	<body>
+		<header>
+			<!-- cabecero de pagina -->
+		</header>
+		<section>
+			{% block content %}{% endblock %}
+		</section>
+		<footer>
+			<!-- pie de pagina -->
+		</footer>
+	</body>
+</html>
