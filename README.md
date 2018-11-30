@@ -1,4 +1,4 @@
-# TiendaElectronica
+# Tienda Electronica
 Asignatura: Desarrollo de aplicaciones web y mobile
 
 Sección: DWY4101-003D
