@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Sucursal(models.Model):
@@ -13,6 +14,8 @@ class Sucursal(models.Model):
 
 class Vendedor(models.Model):
 	codigo = models.AutoField(primary_key = True)
+	usuario = models.OneToOneField(User, unique = True, on_delete = models.DO_NOTHING)
+	run = models.CharField(max_length = 10)
 	nombres = models.CharField(max_length = 30)
 	apPaterno = models.CharField(max_length = 20)
 	apMaterno = models.CharField(max_length = 20)
