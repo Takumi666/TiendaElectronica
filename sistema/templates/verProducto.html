@@ -1,0 +1,23 @@
+{% extends "maqueta.html" %}
+{% block content %}
+{% if producto %}
+<table>
+	<tr>
+		<th>Código</th>
+		<th>Nombre</th>
+		<th>Descripción</th>
+		<th>Precio</th>
+		<th>Foto</th>
+	</tr>
+	<tr>
+		<td>{{ producto.codigo }}</td>
+		<td>{{ producto.nombre }}</td>
+		<td>{{ producto.descripcion }}</td>
+		<td>{{ producto.precio }}</td>
+		<td><img src="{{ producto.foto.url }}" alt="Foto de {{ producto.nombre }}"></td>
+	</tr>
+</table>
+{% else %}
+<p>Lo sentimos, el producto que desea ver no existe.</p>
+{% endif %}
+{% endblock %}

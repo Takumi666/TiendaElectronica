@@ -1,21 +1,26 @@
 {% load static %}
 <!DOCTYPE html>
-	<html>
+<html lang="es"> <!-- El atributo lang permite especificar el idioma de la página -->
 	<head>
-		<meta charset="utf-8">
-		<title>{{ titulo }} | Tienda Electrónica</title>
-		<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-		<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+		<meta charset="utf-8"> <!-- Codificación de caracteres de la página -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"> <!-- Permite que las páginas sean responsive -->
+		<title>{{ titulo }} | Tienda Electrónica</title> <!-- Título de página -->
+		<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"> <!-- Carga los estilos globales del sitio -->
+		<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script> <!-- Carga la librería jQuery -->
+		<!-- El siguiente bloque se cargan los archivos adicionales para cada página del sitio -->
+		{% block imports %}{% endblock %}
 	</head>
 	<body>
-		<header>
-			<!-- cabecero de pagina -->
-		</header>
-		<section>
-			{% block content %}{% endblock %}
-		</section>
-		<footer>
-			<!-- pie de pagina -->
-		</footer>
+		<div id="container">
+			<header>
+				<!-- cabecero de pagina -->
+			</header>
+			<section>
+				{% block content %}{% endblock %}
+			</section>
+			<footer>
+				<!-- pie de pagina -->
+			</footer>
+		</div>
 	</body>
 </html>

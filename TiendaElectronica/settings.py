@@ -33,6 +33,9 @@ INSTALLED_APPS = [
 	"django.contrib.sessions",
 	"django.contrib.messages",
 	"django.contrib.staticfiles",
+	"rest_framework", # Dependencia para utilizar el Django REST Framework
+	"api.apps.ApiConfig", # API para la manipulación de datos
+	"sistema.apps.SistemaConfig", # Aplicación principal del proyecto
 ]
 
 MIDDLEWARE = [

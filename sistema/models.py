@@ -10,12 +10,12 @@ class Sucursal(models.Model):
 	comuna = models.CharField(max_length = 30)
 	telefono = models.IntegerField()
 	correo = models.EmailField()
-	encargado = models.CharField()
+	#encargado = models.CharField()
 
 class Vendedor(models.Model):
 	codigo = models.AutoField(primary_key = True)
 	usuario = models.OneToOneField(User, unique = True, on_delete = models.DO_NOTHING)
-	run = models.CharField(max_length = 10)
+	run = models.CharField(unique = True, max_length = 10)
 	nombres = models.CharField(max_length = 30)
 	apPaterno = models.CharField(max_length = 20)
 	apMaterno = models.CharField(max_length = 20)
@@ -27,10 +27,13 @@ class Producto(models.Model):
 	descripcion = models.TextField()
 	precio = models.IntegerField()
 	tipo = models.CharField(max_length = 20)
+	foto = models.ImageField(upload_to = "productos", blank = True, null = True)
 
 class Venta(models.Model):
 	codigo = models.AutoField(primary_key = True)
-	fechaHora = models.DateTimeField()
-	cantidad = models.IntegerField()
+	vendedor = models.ForeignKey(Vendedor, on_delete = models.DO_NOTHING)
 	sucursal = models.ForeignKey(Sucursal, on_delete = models.DO_NOTHING)
+	fechaHora = models.DateTimeField()
+	producto = models.ForeignKey(Producto, on_delete = models.DO_NOTHING)
+	cantidad = models.IntegerField()
 	comentario = models.TextField(null = True)
