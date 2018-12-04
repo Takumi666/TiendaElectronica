@@ -1,4 +1,219 @@
 * {
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
+	/*se define como se calcularán los cuadrados en base al ancho y al alto con respecto al padding
+	content-box indica que todo será sin considerar padding o bordes
+	border-box indica que se incluyen en los calculos bordes y padding
+	initial se fija el valor por defecto, depende del dispositivo y el navegador
+	inherit utiliza el valor del contenedor del elemento
+	*/
+	box-sizing: border-box;
+	
+}
+
+.contenedor {
+	background:#ccc;
+	width:100%;
+	margin:auto;
+
+	/* Flexbox */
+	/*display es la propiedad que indica como se verán los elementos
+	En css tradicional se usan tipicamente block, inline none, table, pero existen varias opciones
+	flex indica que el elemento tendrá características responsivas
+	*/
+	display:flex;
+	/*Flex-flow indica como se desplegarán los elementos dentro de un contenedor flex
+	hay dos configuraciones básicas flex-direction y flex-wrap
+	row, row-reverse, column, column-reverse flex directiion
+	nowrap,wrap,wrap-reverse
+	*/
+	flex-flow:row wrap;
+}
+
+body {
+	background:#e9e9e9;
+}
+
+header {
+	background:#004E5A;
+	width:100%;
+	padding:20px;
+
+	/* Flexbox */
+	display: flex;
+	/*flex-start desde un comienzo hasta el final
+	flex-end desde el final al comienzo
+	center 
+	space-between los items son puestos con espacios posteriores
+	space-around items son puestos con espacios antes
+	*/
+	justify-content:space-between;
+	align-items:center;
+
+	flex-direction:row;/**otra forma de mostrar lo mismo*/
+	flex-wrap:wrap;
+}
+
+header .logo {
+	color:#fff;
+	font-size:30px;
+}
+
+header .logo img {
+	vertical-align: top;
+}
+
+header .logo a {
+	color:#fff;
+	text-decoration: none;
+	line-height:50px;
+	display: none;
+}
+
+header nav {
+	width:50%;
+	/* Flexbox */
+
+	display:flex;
+	flex-wrap:wrap;
+	align-items:center;
+}
+
+header nav a {
+	background:#00716C;
+	color:#fff;
+	text-align: center;
+	text-decoration: none;
+	padding:10px;
+
+	/* Flexbox */
+	flex-grow:1; /*Especifica el numero maximo de items flex que pueden adecuarse en una zona*/
+}
+
+header nav a:hover {
+	background: #00b2aa;
+}
+
+.main {
+	background:#fff;
+	padding:20px;
+
+	flex:1 1 70%;/*Establece que sera un 70% del ancho del contenedor
+	1 es el numero máximo de items flex 
+	1 estabñece que será automático el ajuste, es decir no cambiará su escala en base a los dimensionamientos
+	
+	*/
+	
+	/*flex:1;*/
+}
+
+.main article {
+	margin-bottom: 20px;
+	padding-bottom:20px;
+	border-bottom:1px solid #000;
+}
+
+.main article:nth-last-child(1){
+	margin-bottom: 0;
+	padding-bottom: 0;
+	border-bottom:none;
+}
+
+aside {
+	background:#e67e22;
+	padding:20px;
+	/*FLEX*/
+	flex:1 1 30%;
+	/*flex:0 0 300px;*/
+
+	display: flex;
+	flex-wrap:wrap;
+	flex-direction:column;
+	justify-content:flex-start;
+}
+
+aside .widget {
+	background: #d35400;
+	height:150px;
+	margin:10px;
+}
+
+footer {
+	background:#2c3e50;
+	width: 100%;
+	padding:20px;
+
+	/* Flexbox */
+	display: flex;
+	flex-wrap:wrap;
+	justify-content:space-between;
+}
+
+footer .links {
+	background:#c0392b;
+	display:flex;
+	flex-wrap:wrap;
+}
+
+footer .links a {
+	flex-grow:1;
+
+	color:#fff;
+	padding:10px;
+	text-align: center;
+	text-decoration:none;
+}
+
+footer .links a:hover {
+	background:#E74C3C;
+}
+
+footer .social {
+	background:#e67e22;
+}
+
+footer .social a {
+	color:#fff;
+	text-decoration: none;
+	padding:10px;
+	display: inline-block;
+}
+
+@media screen and (max-width: 800px) {
+	/*https://www.w3schools.com/cssref/css3_pr_mediaquery.asp*/
+	.contenedor {
+		flex-direction:column;
+	}
+
+	header {
+		flex-direction:column;
+		padding:0;
+	}
+
+	header .logo {
+		margin:20px 0;
+	}
+
+	header nav {
+		width: 100%;
+	}
+
+	aside {
+		flex-direction:row;
+		flex:0;
+	}
+
+	aside .widget {
+		flex-grow:1;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	aside {
+		flex-direction:column;
+	}
+
+	footer {
+		justify-content:space-around;
+	}
 }

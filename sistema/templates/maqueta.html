@@ -1,26 +1,48 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="es"> <!-- El atributo lang permite especificar el idioma de la página -->
-	<head>
-		<meta charset="utf-8"> <!-- Codificación de caracteres de la página -->
-		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"> <!-- Permite que las páginas sean responsive -->
-		<title>{{ titulo }} | Tienda Electrónica</title> <!-- Título de página -->
-		<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"> <!-- Carga los estilos globales del sitio -->
-		<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script> <!-- Carga la librería jQuery -->
-		<!-- El siguiente bloque se cargan los archivos adicionales para cada página del sitio -->
-		{% block imports %}{% endblock %}
-	</head>
-	<body>
-		<div id="container">
-			<header>
-				<!-- cabecero de pagina -->
-			</header>
-			<section>
-				{% block content %}{% endblock %}
-			</section>
-			<footer>
-				<!-- pie de pagina -->
-			</footer>
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Página Muestra</title>
+    <meta name="description" content="Pagina completa con Flexbox"><!--Utilizamos el descriptor en meta para apoyar la busqueda de contenidos en la web-->
+    <meta name="viewport" content="width=device-widtg, user-scalable=no, initial-scale=1.0,maximun-scale=1.0,minimun-scale=1.0"><!--las escalas indican un punto inicial, la escala maxima y minima-->
+    <script src="prefix.js" type="test/javascript"></script><!--Script para asegurarq eu en todos los navegadores y dispositivos el sitio se vea igual-->
+	<link rel="stylesheet" href="styles.css">
+	{% block imports %}{% endblock %}
+</head>
+<body>
+	<div class="contenedor">
+	<header>
+		<div class="logo">
+			<img src="images/logo.png" width="150" alt="">
+			<a href="#">Electronic Solutions</a>
 		</div>
-	</body>
+
+		<nav>
+			<a href="#">Inicio</a>
+			<a href="#">Placeholder1</a>
+			<a href="#">Placeholder2</a>
+			<a href="#">Pleisjolder3</a>
+		</nav>
+	</header>
+
+	<section class="main">
+		{% block content %}{% endblock %}
+	</section>
+
+	<aside>
+		<div class="widget">
+			<div class="imagen"></div>
+		</div>
+
+		<div class="widget">
+			<div class="imagen"></div>
+		</div>
+	</aside>
+
+	<footer>
+		<!--- aqui va el footer --->
+	</footer>
+</div>
+</body>
 </html>
