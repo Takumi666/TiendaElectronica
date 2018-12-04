@@ -1,13 +1,13 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8">
-    <title>Página Muestra</title>
-    <meta name="description" content="Pagina completa con Flexbox"><!--Utilizamos el descriptor en meta para apoyar la busqueda de contenidos en la web-->
-    <meta name="viewport" content="width=device-widtg, user-scalable=no, initial-scale=1.0,maximun-scale=1.0,minimun-scale=1.0"><!--las escalas indican un punto inicial, la escala maxima y minima-->
-    <script src="prefix.js" type="test/javascript"></script><!--Script para asegurarq eu en todos los navegadores y dispositivos el sitio se vea igual-->
-	<link rel="stylesheet" href="styles.css">
+	<meta charset="utf-8">
+	<meta name="description" content="Tienda electrónica Electronic Solutions"><!--Utilizamos el descriptor en meta para apoyar la busqueda de contenidos en la web-->
+	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximun-scale=1.0,minimun-scale=1.0"><!--las escalas indican un punto inicial, la escala maxima y minima-->
+	<title>{{ titulo }} | Electronic Solutions</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
 	{% block imports %}{% endblock %}
 </head>
 <body>
@@ -29,16 +29,6 @@
 	<section class="main">
 		{% block content %}{% endblock %}
 	</section>
-
-	<aside>
-		<div class="widget">
-			<div class="imagen"></div>
-		</div>
-
-		<div class="widget">
-			<div class="imagen"></div>
-		</div>
-	</aside>
 
 	<footer>
 		<!--- aqui va el footer --->
