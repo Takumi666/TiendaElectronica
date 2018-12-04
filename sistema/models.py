@@ -10,7 +10,6 @@ class Sucursal(models.Model):
 	comuna = models.CharField(max_length = 30)
 	telefono = models.IntegerField()
 	correo = models.EmailField()
-	#encargado = models.CharField()
 
 class Vendedor(models.Model):
 	codigo = models.AutoField(primary_key = True)
@@ -19,6 +18,7 @@ class Vendedor(models.Model):
 	nombres = models.CharField(max_length = 30)
 	apPaterno = models.CharField(max_length = 20)
 	apMaterno = models.CharField(max_length = 20)
+	encargado = models.BooleanField(default = False)
 	sucursal = models.ForeignKey(Sucursal, on_delete = models.DO_NOTHING)
 
 class Producto(models.Model):
