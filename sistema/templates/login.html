@@ -3,6 +3,7 @@
 {% block content %}
 <form method="POST">
 	<h2>Iniciar sesión</h2>
+	{% csrf_token %}
 	<table>
 		{% for campo in form %}
 		<tr>
@@ -12,5 +13,6 @@
 		</tr>
 		{% endfor %}
 	</table>
+	<input type="submit" name="Entrar">
 </form>
 {% endblock %}
