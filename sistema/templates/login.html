@@ -1,0 +1,16 @@
+{% extends "maqueta.html" %}
+{% load static %}
+{% block content %}
+<form method="POST">
+	<h2>Iniciar sesión</h2>
+	<table>
+		{% for campo in form %}
+		<tr>
+			<td>{{ campo.label_tag }}</td>
+			<td>{{ campo }}</td>
+			<td>{{ campo.errors }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+</form>
+{% endblock %}
