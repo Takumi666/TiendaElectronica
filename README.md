@@ -5,7 +5,7 @@ Sección: DWY4101-003D
 
 Integrantes:
 
-* Raul Flores
+* Raúl Flores
 * Jorge Fuica
 * Francisco Ramírez
 * Manuel Yávar
