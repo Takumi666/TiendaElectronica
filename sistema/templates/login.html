@@ -4,6 +4,7 @@
 <form method="POST">
 	<h2>Iniciar sesión</h2>
 	{% csrf_token %}
+	{% if login_fail %}<p>El usuario o contraseña que ingresó no son válidos.</p>{% endif %}
 	<table>
 		{% for campo in form %}
 		<tr>
