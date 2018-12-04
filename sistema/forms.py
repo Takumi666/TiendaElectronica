@@ -23,7 +23,7 @@ class VendedorForm(forms.Form):
 	nombres = forms.CharField(label = "Nombres", widget = forms.TextInput(attrs = { "id": "nombres", "placeholder": "Juan Armando" }))
 	apPaterno = forms.CharField(label = "Apellido paterno", widget = forms.TextInput(attrs = { "id": "appaterno", "placeholder": "Pérez" }))
 	apMaterno = forms.CharField(label = "Apellido materno", widget = forms.TextInput(attrs = { "id": "apmaterno", "placeholder": "Cisternas" }))
-	sucursal = forms.ModelChoiceField(label = "Tienda", widget = forms.Select(attrs = { "id": "tienda" }))
+	sucursal = forms.ModelChoiceField(label = "Tienda", queryset = Sucursal.objects.all(), widget = forms.Select(attrs = { "id": "tienda" }))
 
 class TiendaForm(forms.Form):
 	nombre = forms.CharField(label = "Nombre", widget = forms.TextInput(attrs = { "id": "nombre", "placeholder": "Santa Isabel"}))
