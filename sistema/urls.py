@@ -7,7 +7,7 @@ urlpatterns = [
 	url(r"^cuentas/logout$", views.cerrar_sesion, name = "logout"),
 	url(r"^cuentas/recuperarpass/$", views.recuperar_password, name = "recuperarPassword"),
 	url(r"^cuentas/cambiarpass/(?P<token>[\w\.-]+)&(?P<user>[\w\.]+)$", views.cambiar_password, name = "cambiarPassword"),
-
+	url(r"^Catalogo$", views.tienda, name = "Tienda"),
 	url(r"^gestion$", views.menu_gestion, name = "menu_gestion"),
 
 	# Ventas

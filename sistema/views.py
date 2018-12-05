@@ -13,6 +13,8 @@ global user_log
 # Create your views here.
 def index(request):
 	return render(request, "index.html", { "titulo": "Inicio" }) # Retorna la vista solicitada
+def tienda(request):
+	return render(request, "Tienda.html", { "titulo": "catalogo" }) # Retorna la vista solicitada	
 
 def es_encargado():
 	if user.encargado:
