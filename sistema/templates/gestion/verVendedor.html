@@ -1,6 +1,8 @@
 {% extends "maqueta.html" %}
 {% block content %}
 {% if vendedor %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/tablas.css' %}">
 <table>
 	<tr>
 		<th>Código</th>
