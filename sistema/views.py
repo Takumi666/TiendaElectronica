@@ -123,7 +123,7 @@ def registrar_vendedor(request):
 			return redirect("gestion_vendedores") # Redirecciona al menú de gestión de vendedores
 	else: # Se asume que la vista fue solicitada sin envío de formulario
 		form = VendedorForm() # Se instancia un nuevo formulario para ingresar datos del nuevo registro
-	return render(request, "gestion/registrarProducto.html", { "titulo": "Registrar un producto", "form": form })
+	return render(request, "gestion/registrarVendedor.html", { "titulo": "Registrar un vendedor", "form": form })
 
 @login_required
 @staff_member_required
