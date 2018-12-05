@@ -35,6 +35,11 @@ def cerrar_sesion(request):
 		logout(request) # Se cierra la sesión del usuario
 	return redirect("index") # Redirecciona a la página principal
 
+@login_required
+@staff_member_required
+def menu_gestion(request):
+	return render(request, "gestion/inicio.html", { "titulo": "Menú gestión" })
+
 """
 Gestión de productos
 """
