@@ -13,6 +13,8 @@ class VentaForm(forms.Form):
 	cantidad = forms.IntegerField(label = "Cantidad", widget = forms.NumberInput(attrs = { "id": "cantidad" }))
 	comentario = forms.CharField(label = "Comentario", required = False, widget = forms.Textarea(attrs = { "id": "comentario", "placeholder": "Ingrese comentario de la venta" }))
 
+
+
 class ProductoForm(forms.Form):
 	nombre = forms.CharField(label = "Nombre", widget = forms.TextInput(attrs = { "id": "nombre", "placeholder": "Ingrese nombre del producto"}))
 	descripcion = forms.CharField(label = "Descripción", widget = forms.Textarea(attrs = { "id": "descripcion", "placeholder": "Ingrese descripción del producto" }))
