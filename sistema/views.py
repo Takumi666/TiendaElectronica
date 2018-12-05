@@ -4,8 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
-from sistema.forms import ProductoForm, VendedorForm, SucursalForm, LoginForm
-from sistema.models import Producto, Vendedor, Sucursal
+from sistema.forms import ProductoForm, VendedorForm, SucursalForm, VentaForm, LoginForm
+from sistema.models import Producto, Vendedor, Sucursal, Venta
 
 # Create your views here.
 def index(request):
@@ -235,3 +235,60 @@ def eliminar_sucursal(request, pk):
 		return redirect("gestion_sucursales") # Redirecciona al menú de gestión de sucursales
 	except ObjectDoesNotExist: # En caso de algún error se procede a mostrar la página describiendo lo ocurrido
 		return render(request, "gestion/eliminarSucursalError.html", { "titulo": "Error al eliminar sucursal" }) # Retorna la vista con el error generado
+
+"""
+Módulo de ventas
+"""
+
+@login_required
+def registrar_venta(request):
+	if request.method == "POST": # Verifica si la solicitud de esta vista lleva consigo el envío de formulario
+		form = VentaForm(request.POST) # Se instancia el formulario pasando como parámetro los datos ingresados
+		vendedor = Vendedor.objects.get(usuario = request.user)
+		if form.is_valid(): # Inicia el proceso de validación y verifica si los datos ingresados esten correctos
+			data = form.cleaned_data # Extrae los datos ingresados del formulario a esta variable
+			Venta.objects.create(vendedor = vendedor, sucursal = vendedor.sucursal, producto = data.get("producto"), cantidad = data.get("cantidad"), comentario = data.get("comentario")) # Se registra una nueva venta
+			return redirect("modulo_ventas") # Redirecciona al menú de gestión de vendedores
+	else: # Se asume que la vista fue solicitada sin envío de formulario
+		form = VentaForm() # Se instancia un nuevo formulario para ingresar datos del nuevo registro
+	return render(request, "ventas/registrarVenta.html", { "titulo": "Registrar una venta", "form": form }) # Retorna la vista solicitada
+
+@login_required
+def ver_venta(request, pk):
+	try:
+		venta = Venta.objects.get(codigo = pk) # Obtiene la venta solicitada con el identificador que se pasa como parámetro
+	except: # Esta excepción cubre el error cuando el registro de una venta no existe
+		venta = None # Cuando no exista la venta, se asigna como valor nulo a esta variable
+	return redirect(request, "ventas/verVenta.html", { "venta": venta }) # Retorna la vista solicitada
+
+@login_required
+def actualizar_venta(request, pk):
+	try:
+		venta = Venta.objects.get(codigo = pk) # Obtiene la venta solicitada con el identificador que se pasa como parámetro
+		if request.method == "POST": # Verifica si la solicitud de esta vista lleva consigo el envío de formulario
+			form = VentaForm(request.POST) # Se instancia el formulario pasando como parámetro los datos ingresados
+			if form.is_valid(): # Inicia el proceso de validación y verifica si los datos ingresados esten correctos
+				data = form.cleaned_data # Extrae los datos ingresados del formulario a esta variable
+				# Se procede la actualización de los datos de la venta solicitada
+				venta.producto = data.get("producto")
+				venta.cantidad = data.get("cantidad")
+				venta.comentario = data.get("comentario")
+				venta.save() # Se guardan los cambios realizados
+				return redirect("modulo_ventas") # Redirecciona al módulo de ventas
+		else: # Se asume que la vista fue solicitada sin envío de formulario
+			form = VentaForm({ "producto": venta.producto, "cantidad": venta.cantidad, "comentario": venta.comentario }) # Se instancia el formulario con los valores del registro a modificar
+	except ObjectDoesNotExist: # En caso de que el registro no exista se asignan en nulo las variables venta y form
+		venta = None
+		form = None
+	return render(request, "ventas/actualizarVenta.html", { "titulo": "Actualizar venta", "form": form, "venta": venta }) # Retorna la vista solicitada
+
+@login_required
+def anular_venta(request, pk):
+	try:
+		venta = Venta.objects.get(codigo = pk) # Obtiene la venta solicitada con el identificador que se pasa como parámetro
+		if venta: # Verifica que la venta existe
+			venta.anulada = True # Se anula la venta solicitada
+			venta.save() # Guarda los cambios
+		return redirect("modulo_ventas") # Redirecciona al módulo de ventas
+	except ObjectDoesNotExist: # En caso de algún error se procede a mostrar la página describiendo lo ocurrido
+		return render(request, "gestion/anularVentaError.html", { "titulo": "Error al anular venta" }) # Retorna la vista con el error generado
