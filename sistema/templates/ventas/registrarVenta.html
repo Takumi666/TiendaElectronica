@@ -1,9 +1,7 @@
-{% extends "gestion/maqueta.html" %}
-{% load static %}
+{% extends "ventas/maqueta.html" %}
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/productos.css' %}">
-<form class="regprod" method="POST" enctype="multipart/form-data">
-	<h2>Registrar un producto</h2>
+<form method="POST">
+	<h2>Registrar una venta</h2>
 	{% csrf_token %}
 	<table>
 		{% for campo in form %}

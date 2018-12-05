@@ -1,7 +1,7 @@
 {% extends "gestion/maqueta.html" %}
 {% block content %}
+{% if vendedor %}
 <form method="POST">
-	{% if vendedor %}
 	<h2>Actualizar vendedor</h2>
 	{% csrf_token %}
 	<table>
@@ -14,9 +14,9 @@
 		{% endfor %}
 	</table>
 	<input type="submit" value="Actualizar">
-	{% else %}
-	<h2>Vendedor no encontrado</h2>
-	<p>Lo sentimos, el vendedor que desea actualizar no existe.</p>
-	{% endif %}
 </form>
+{% else %}
+<h2>Vendedor no encontrado</h2>
+<p>Lo sentimos, el vendedor que desea actualizar no existe.</p>
+{% endif %}
 {% endblock %}
