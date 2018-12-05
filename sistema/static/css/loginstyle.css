@@ -35,7 +35,7 @@ input[type='text'], [type='email'],[type='password']{
 
 input[type=submit] {
   padding:5px 15px;
-  background:#ccc;
+  background:#96D1B8;
   border:0 none;
   cursor:pointer;
   -webkit-border-radius: 5px;
@@ -62,28 +62,4 @@ tr {
 	background: #fff;
   box-shadow: 1px 1px 2px white, 0 0 2em white, 0 0 0.2em white;
   font-size: 30px;
-}
-
-.main {
-	background:#fff0;
-	padding:80px 20px 80px 20px;
-
-	flex:1 1 70%;/*Establece que sera un 70% del ancho del contenedor
-	1 es el numero máximo de items flex
-	1 estabñece que será automático el ajuste, es decir no cambiará su escala en base a los dimensionamientos
-
-	*/
-
-	/*flex:1;*/
-}
-.main article {
-	margin-bottom: 20px;
-	padding-bottom:20px;
-	border-bottom:1px solid #000;
-}
-
-.main article:nth-last-child(1){
-	margin-bottom: 0;
-	padding-bottom: 0;
-	border-bottom:none;
 }
