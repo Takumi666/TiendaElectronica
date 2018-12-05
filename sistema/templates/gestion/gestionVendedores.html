@@ -1,21 +1,30 @@
 {% extends "maqueta.html" %}
 {% block content %}
 {% load static %}
-<table>
-	<tr>
-		<th>Código</th>
-		<th>RUN</th>
-		<th>Nombre completo</th>
-		<th>Correo electrónico</th>
-	</tr>
-	{% for v in vendedores %}
-	<tr>
-		<td>{{ v.codigo }}</td>
-		<td>{{ v.run }}</td>
-		<td>{{ v.nombres }} {{ v.apPaterno }} {{ v.apMaterno }}</td>
-		<td>{{ v.correo }}</td>
-	</tr>
-	{% endfor %}
+<div id="jsonresp" style="margin-top: 100px">
+<table id=lista>
+		<tr class="titulos">
+				<th>Nombres</th>
+				<th>Apellido </th>
+				<th>Encargado</th>
+				<th>Sucursal</th>
+		</tr>
+
 </table>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+$.ajax({
+				 url : "http://localhost:8000/api/vendedores",
+				 dataType: "json",
+				 success : function (result) {
+					 $.each(result, function(i,items){
+									 $("#lista").append("<tr>"+"<td>" + result[i].nombres + "</td>"
+										 + "<td>" + result[i].apPaterno + "</td>" + "<td>" + result[i].encargado + "</td>" +"<td>" + result[i].sucursal + "</td>" +
+										  "</tr>");
+							});
+						}});
+				 });
+</script>
 <a href="{% url 'registrar_vendedor' %}">Registrar Vendedor</a>
 {% endblock %}
