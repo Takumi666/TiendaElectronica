@@ -187,17 +187,6 @@ tr {
 	/*flex:1;*/
 }
 
-.main article {
-	margin-bottom: 20px;
-	padding-bottom:20px;
-	border-bottom:1px solid #000;
-}
-
-.main article:nth-last-child(1){
-	margin-bottom: 0;
-	padding-bottom: 0;
-	border-bottom:none;
-}
 
 aside {
 	background:#e67e22;

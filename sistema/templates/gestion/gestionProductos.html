@@ -1,6 +1,7 @@
 {% extends "maqueta.html" %}
 {% block content %}
-
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/tablas.css' %}">
 <div id="jsonresp" style="margin-top: 100px">
 <table id=lista>
 		<tr class="titulos">
@@ -9,7 +10,6 @@
 				<th>Precio</th>
 				<th>Tipo</th>
 		</tr>
-
 </table>
 </div>
 <script type="text/javascript">
@@ -20,7 +20,7 @@ $.ajax({
 				 success : function (result) {
 					 $.each(result, function(i,items){
 									 $("#lista").append("<tr>"+"<td>" + result[i].nombre + "</td>"
-										 + "<td>" + result[i].foto + "</td>" + "<td>" + result[i].precio + "</td>" +"<td>" + result[i].tipo + "</td>" +
+										 + "<td>" +"<img src='" + result[i].foto + "'height='125' width='125' align=right    />"+ "<td>" + result[i].precio + "</td>" +"<td>" + result[i].tipo + "</td>" +
 										  "</tr>");
 							});
 						}});
