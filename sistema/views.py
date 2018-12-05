@@ -8,7 +8,6 @@ from sistema.forms import ProductoForm, VendedorForm, SucursalForm, VentaForm, O
 from sistema.models import Producto, Vendedor, Sucursal, Venta, Oferta
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.core.mail import send_mail
-import numpy
 from django.template import loader
 from django.http import HttpResponse
 
