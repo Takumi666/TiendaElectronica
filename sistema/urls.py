@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from . import views
+from django.urls import path
 
 urlpatterns = [
 	url(r"^$", views.index, name = "index"),
@@ -45,4 +46,7 @@ urlpatterns = [
 	url(r"^gestion/ofertas/(?P<pk>[0-9]+)$", views.ver_oferta, name = "ver_oferta"),
 	url(r"^gestion/ofertas/actualizar/(?P<pk>[0-9]+)$", views.actualizar_oferta, name = "actualizar_oferta"),
 	url(r"^gestion/ofertas/eliminar/(?P<pk>[0-9]+)$", views.eliminar_oferta, name = "eliminar_oferta"),
+
+	#Worker
+	path(r'base_layout/',views.base_layout,name='base_layout'),
 ]

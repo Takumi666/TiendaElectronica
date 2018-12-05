@@ -1,7 +1,9 @@
+{% load pwa %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
+	{% progressive_web_app_meta %}
 	<meta charset="utf-8">
 	<meta name="description" content="Tienda electrónica Electronic Solutions"><!--Utilizamos el descriptor en meta para apoyar la busqueda de contenidos en la web-->
 	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximun-scale=1.0,minimun-scale=1.0"><!--las escalas indican un punto inicial, la escala maxima y minima-->
@@ -10,6 +12,7 @@
 	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
 	<script src="{% static 'js/prefix.js' %}" type="test/javascript"></script><!--Script para asegurarq eu en todos los navegadores y dispositivos el sitio se vea igual-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="{% static 'js/serviceworker.js' %}"></script> <!-- Carga el script para service worker -->
 	<script type="text/javascript" src="{% static 'js/idb.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/idbop.js' %}"></script>
 	{% block imports %}{% endblock %}

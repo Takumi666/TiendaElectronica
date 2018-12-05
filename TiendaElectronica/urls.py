@@ -24,4 +24,5 @@ urlpatterns = [
 	path("api/", include("api.urls")), # Se incluyen los urls de la API
 	path(r"", include("sistema.urls")), # URLs de la aplicación principal del proyecto
 	path('oauth/', include('social_django.urls', namespace='social')),
+	path("", include("pwa.urls")), # Se cargan las urls para la Progressive
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) # Añade las posibles direcciones de las imágenes de los productos
