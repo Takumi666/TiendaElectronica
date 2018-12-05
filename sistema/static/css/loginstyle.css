@@ -113,7 +113,7 @@ header nav {
 }
 
 form.loginform {
-    font-family: cursive;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: auto;
     display: flex;
 	flex-flow: column;
@@ -162,6 +162,15 @@ tr {
 	flex-flow: column;
 	padding: 10px;
 }
+.loginbox {
+	background: #fff;
+    box-shadow: 1px 1px 2px white, 0 0 2em white, 0 0 0.2em white;
+    font-size: 30px;
+}
+
+header nav{
+	display: none;
+}
 
 header nav a {
 	background:#00716C;
@@ -179,7 +188,7 @@ header nav a:hover {
 }
 
 .main {
-	background:#fff;
+	background:#fff0;
 	padding:80px 20px 80px 20px;
 
 	flex:1 1 70%;/*Establece que sera un 70% del ancho del contenedor

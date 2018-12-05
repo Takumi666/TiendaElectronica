@@ -1,11 +1,49 @@
-{% extends "maqueta.html" %}
 {% load static %}
-{% block content %}
-<form method="POST">
-	<h2>Iniciar sesión</h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Tienda electrónica Electronic Solutions"><!--Utilizamos el descriptor en meta para apoyar la busqueda de contenidos en la web-->
+	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximun-scale=1.0,minimun-scale=1.0"><!--las escalas indican un punto inicial, la escala maxima y minima-->
+	<title>{{ titulo }} | Electronic Solutions</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/loginstyle.css' %}">
+	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+	{% block imports %}{% endblock %}
+</head>
+<body>
+	<div class="topbar">
+	<div class="topcontainer">
+	<ul style="margin-right: 10px">
+	<li><a href="#">Iniciar Sesion</a></li>
+	<li><a>Contacto</a></li>
+	<li><a><img src="{% static 'images/facebook.png' %}"></a></li>
+	<li><a><img src="{% static 'images/twitter.png' %}"></a></li>
+	</ul>
+	</div>
+	</div>
+
+
+	<div class="contenedor">
+		<header>
+			<div class="logo">
+				<img src="{% static 'images/logo.png' %}" width="150" alt="">
+				<a href="#">LoboFactory</a>
+			</div>
+
+			<nav>
+				<a href="#">Inicio</a>
+				<a href="#">Blog</a>
+				<a href="#">Proyectos</a>
+				<a href="#">Contacto</a>
+			</nav>
+		</header>
+
+		<div class="main">
+<div class="loginbox">
+<form method="POST" class="loginform">
 	{% csrf_token %}
 	{% if login_fail %}<p>El usuario o contraseña que ingresó no son válidos.</p>{% endif %}
-	<table>
+	<table id="tablalogin">
 		{% for campo in form %}
 		<tr>
 			<td>{{ campo.label_tag }}</td>
@@ -14,7 +52,28 @@
 		</tr>
 		{% endfor %}
 	</table>
-	<input type="submit" name="Entrar">
-	<a>¿No tienes Cuenta?</a><<a href="#">Registrate aqui</a>
+	<input type="submit" name="Entrar" id="botonenviar">
+	<br>
+	<a>¿No tienes Cuenta?</a><a href="#">Registrate aqui</a>
 </form>
-{% endblock %}
+</div>
+</div>
+</div>
+<div class="down">
+	<footer>
+	<section class="links">
+		<a href="#">Inicio</a>
+		<a href="#">Blog</a>
+		<a href="#">Proyectos</a>
+		<a href="#">Contacto</a>
+	</section>
+	<div class="social">
+		<a href="#">FB</a>
+		<a href="#">TW</a>
+	</div>
+	</footer>
+</div>
+
+</body>
+</body>
+</html>
