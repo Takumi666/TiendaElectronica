@@ -1,6 +1,8 @@
 {% extends "maqueta.html" %}
+{% load static %}
 {% block content %}
-<form method="POST">
+<link rel="stylesheet" type="text/css" href="{% static 'css/productos.css' %}">
+<form class="regprod" method="POST">
 	<h2>Registrar un producto</h2>
 	{% csrf_token %}
 	<table>

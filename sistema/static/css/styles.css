@@ -21,17 +21,7 @@
 	width:70%;
 	margin:auto;
 	padding-top: 100px;
-	/* Flexbox */
-	/*display es la propiedad que indica como se verán los elementos
-	En css tradicional se usan tipicamente block, inline none, table, pero existen varias opciones
-	flex indica que el elemento tendrá características responsivas
-	*/
 	display:flex;
-	/*Flex-flow indica como se desplegarán los elementos dentro de un contenedor flex
-	hay dos configuraciones básicas flex-direction y flex-wrap
-	row, row-reverse, column, column-reverse flex directiion
-	nowrap,wrap,wrap-reverse
-	*/
 	flex-flow:row wrap;
 }
 
@@ -68,18 +58,10 @@ body {
 header {
 	background:#004e5a00;
 	width:100%;
-	/* Flexbox */
 	display: flex;
-	/*flex-start desde un comienzo hasta el final
-	flex-end desde el final al comienzo
-	center 
-	space-between los items son puestos con espacios posteriores
-	space-around items son puestos con espacios antes
-	*/
 	justify-content:space-between;
 	align-items:center;
-
-	flex-direction:row;/**otra forma de mostrar lo mismo*/
+	flex-direction:row;
 	flex-wrap:wrap;
 }
 
@@ -105,20 +87,18 @@ header .logo a {
 
 header nav {
 	width:100%;
-	/* Flexbox */
-
 	display:flex;
 	flex-wrap:wrap;
 	align-items:center;
 }
 
-form.loginform {
-    font-family: cursive;
+form.regprod {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: auto;
     display: flex;
-	flex-flow: column;
-	text-align: center;
-	padding: 50px; 
+    flex-flow: column;
+    text-align: center;
+    padding: 50px;
 }
 
 input[type=text] {

@@ -1,0 +1,8 @@
+form.regprod {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: auto;
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+    padding: 50px;
+}
