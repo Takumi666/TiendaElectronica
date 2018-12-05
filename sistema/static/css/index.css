@@ -1,0 +1,39 @@
+.cont1{
+  width:50%;
+	margin:auto;
+	padding-top: 100px;
+	display:flex;
+	flex-flow:row wrap;
+}
+.cont2{
+  width:50%;
+	margin:auto;
+	padding-top: 100px;
+	display:flex;
+	flex-flow:row wrap;
+}
+
+.izquierda{
+  background: #73A2A6;
+  width:70%;
+	margin:30px;
+	padding-top: 100px;
+	display:flex;
+	flex-flow:row wrap;
+}
+.derecha{
+  background: #D7F4EC;
+  width:30%;
+	margin:auto;
+	padding-top: 100px;
+	display:flex;
+	flex-flow:row wrap;
+}
+.abajo{
+  background: #96D1B8;
+  width:100%;
+  margin:auto;
+  padding-top: 100px;
+  display:flex;
+  flex-flow:row wrap;
+}
