@@ -4,26 +4,32 @@
 {% block content %}
 <!--se le informa a django que se cargaran archivos estaticos-->
 {% load staticfiles %}
-
-<h1>Lista de las Mascotas</h1>
+<link rel="stylesheet" type="text/css" href="{% static 'css/tablas.css' %}">
+<h1>Lista de Ofertas</h1>
 {% if lista %}
 <table>
     <tr>
-        <th>ID Mascota</th>
-        <th>Nombre Mascota</th>
-        <th>Estado</th>
-        <th>Raza</th>
+        <th>Nombre</th>
+        <th>Foto</th>
+        <th>Descripcion</th>
+        <th>Precio</th>
+        <th>Descuento</th>
     </tr>
-    {% for m in lista.object_list %}
-    <tr>
-        <td>{{ m.codigoMascota }}</td>
-        <td>{{ m.nombreMascota }}</td>
-        <td>{{ m.estado }}</td>
-        <td>{{ m.raza }}</td>
-    </tr>
+    {% for m in lista %}
+      {% for i in ofer %}
+        {% if m.codigo == i.producto_id %}
+          <tr>
+              <td>{{ m.nombre }}</td>
+              <td><img src="{{ m.foto }}" ></img></td>
+              <td>{{ m.descripcion }}</td>
+              <td>{{ m.precio }}</td>
+              <td>{{ i.porcentaje }}</td>
+          </tr>
+        {% endif%}
+      {% endfor%}
     {% endfor %}
 </table>
 {% else %}
-    <h5>No hay Mascotas</h5>
+    <h5>No hay Ofertas</h5>
 {% endif %}
 {% endblock %}

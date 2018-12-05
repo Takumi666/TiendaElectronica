@@ -8,13 +8,25 @@ from sistema.forms import ProductoForm, VendedorForm, SucursalForm, VentaForm, O
 from sistema.models import Producto, Vendedor, Sucursal, Venta, Oferta
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.core.mail import send_mail
+from django.template import loader
+from django.http import HttpResponse
 
 global user_log
 # Create your views here.
 def index(request):
 	return render(request, "index.html", { "titulo": "Inicio" }) # Retorna la vista solicitada
 def tienda(request):
-	return render(request, "Tienda.html", { "titulo": "catalogo" }) # Retorna la vista solicitada	
+	return render(request, "Tienda.html", { "titulo": "catalogo" }) # Retorna la vista solicitada
+def ofertas(request):
+	lista=Producto.objects.all().order_by('nombre')
+	ofer=Oferta.objects.all()
+	#persones=Persona.objects.filter(nombrePersona="carlos")
+	plantilla=loader.get_template("ofertas.html")
+	diccionario={
+		'lista':lista,
+		'ofer':ofer,
+	}
+	return HttpResponse(plantilla.render(diccionario,request))
 
 def es_encargado():
 	if user.encargado:
