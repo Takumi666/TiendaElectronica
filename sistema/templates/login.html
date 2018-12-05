@@ -4,7 +4,7 @@
 {% block content %}
 <!--se le informa a django que se cargaran archivos estaticos-->
 {% load staticfiles %}
-<div class="loginbox">
+<div class="loginbox" align="center">
 	<form method="POST" class="loginform">
 		{% csrf_token %}
 		<table>
@@ -18,9 +18,9 @@
 				</tr>
 				{% endfor %}
 		</table>
-		<input  class="boton" type="submit" value="Ingresar">
-		<h5>¿No tienes cuenta? <a href="#">Registrate</a></h5>
-		<h5>¿Olvidaste tu Contraseña? <a href="#">Click Aqui</a></h5>
+		<p align="center"><input  class="boton" type="submit" value="Ingresar">
+		<p align="center">¿No tienes cuenta? <a href="#">Registrate</a>
+		<p align="center">¿Olvidaste tu Contraseña? <a href="#">Click Aqui</a>
 	</form>
 <p align="center"><a href="{% url 'social:begin' 'facebook' %}"><img src="{% static 'images/fb.png' %}" width="32px" alt="fb">Iniciar con Facebook</a>
 {% endblock %}
