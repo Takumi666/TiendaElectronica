@@ -164,15 +164,6 @@ table#tablalogin {
 	padding: 10px;
 }
 
-tr {
-    display: flex;
-	flex-flow: column;
-	padding: 10px;
-}
-
-
-
-
 
 .main {
 	background:#D7F4EC;
