@@ -36,6 +36,7 @@ INSTALLED_APPS = [
 	"rest_framework", # Dependencia para utilizar el Django REST Framework
 	"api.apps.ApiConfig", # API para la manipulación de datos
 	"sistema.apps.SistemaConfig", # Aplicación principal del proyecto
+	'social_django', #Login con Facebook
 ]
 
 MIDDLEWARE = [
@@ -46,6 +47,7 @@ MIDDLEWARE = [
 	"django.contrib.auth.middleware.AuthenticationMiddleware",
 	"django.contrib.messages.middleware.MessageMiddleware",
 	"django.middleware.clickjacking.XFrameOptionsMiddleware",
+	'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = "TiendaElectronica.urls"
@@ -61,6 +63,8 @@ TEMPLATES = [
 				"django.template.context_processors.request",
 				"django.contrib.auth.context_processors.auth",
 				"django.contrib.messages.context_processors.messages",
+				'social_django.context_processors.backends',
+				'social_django.context_processors.login_redirect',
 			],
 		},
 	},
@@ -106,14 +110,38 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
-
 STATIC_DIRS = (os.path.join(BASE_DIR,"static"))
-
 #EMAIL
-
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'pruebas.soft710@gmail.com'
 EMAIL_HOST_PASSWORD = 'pruebassoftware1'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+#Login de Facebook
+APPEND_SLASH = False #No agrega el slash (/) a las direcciones internas del django (pal facebook)
+SESSION_COOKIE_SECURE=False #Algunas cookies piden estar en https, con esto ignora ese error y pasa de largo (para el inicio de sesion)
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/' # Redireccionamiento a la página principal cuando se inicie sesión con facebook
+#Datos del Login de Facebook
+SOCIAL_AUTH_FACEBOOK_IGNORE_DEFAULT_SCOPE = True
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email'] # Esta variable especifica que la app solo necesitará el correo asociado al FB
+SOCIAL_AUTH_FACEBOOK_KEY = '285294128779996' # ID de la app
+SOCIAL_AUTH_FACEBOOK_SECRET = 'b464a324852f4b4bcf608accac807e72' # Clave secreta de la app
+#Facebook
+AUTHENTICATION_BACKENDS = (
+	'social_core.backends.facebook.FacebookOAuth2',
+	'django.contrib.auth.backends.ModelBackend',
+)
+#Pipeline
+SOCIAL_AUTH_PIPELINE = (
+	'social_core.pipeline.social_auth.social_details',
+	'social_core.pipeline.social_auth.social_uid',
+	'social_core.pipeline.social_auth.auth_allowed',
+	'social_core.pipeline.social_auth.social_user',
+	'social_core.pipeline.user.get_username',
+	'social_core.pipeline.social_auth.associate_by_email',
+	'social_core.pipeline.user.create_user',
+	'social_core.pipeline.social_auth.associate_user',
+	'social_core.pipeline.social_auth.load_extra_data',
+	'social_core.pipeline.user.user_details',
+)
