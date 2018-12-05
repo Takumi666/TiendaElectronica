@@ -1,29 +1,28 @@
 {% extends "maqueta.html" %}
 {% block content %}
 <div id="jsonresp" style="margin-top: 100px">
-<table id=lista>
+	<table id=lista>
 		<tr class="titulos">
-				<th>Nombre</th>
-				<th>Direccion </th>
-				<th>Ciudad</th>
-				<th>Comuna</th>
+			<th>Nombre</th>
+			<th>Direccion </th>
+			<th>Ciudad</th>
+			<th>Comuna</th>
 		</tr>
-
-</table>
+	</table>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){
-$.ajax({
-				 url : "http://localhost:8000/api/sucursales",
-				 dataType: "json",
-				 success : function (result) {
-					 $.each(result, function(i,items){
-									 $("#lista").append("<tr>"+"<td>" + result[i].nombre + "</td>"
-										 + "<td>" + result[i].direccion + "</td>" + "<td>" + result[i].ciudad + "</td>" +"<td>" + result[i].comuna + "</td>" +
-										  "</tr>");
-							});
-						}});
-				 });
+	$(document).ready(function(){
+		$.ajax({
+			url : "http://localhost:8000/api/sucursales",
+			dataType: "json",
+			success: function(result) {
+				$.each(result, function(i, items) {
+					$("#lista").append("<tr><td>" + result[i].nombre + "</td>"
+					+ "<td>" + result[i].direccion + "</td>" + "<td>" + result[i].ciudad + "</td>" +"<td>" + result[i].comuna + "</td></tr>");
+				});
+			}
+		});
+	});
 </script>
 <a href="{% url 'registrar_sucursal' %}">Registrar sucursal</a>
 {% endblock %}

@@ -4,8 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
-from sistema.forms import ProductoForm, VendedorForm, SucursalForm, VentaForm, LoginForm, FormCambioPassword, FormRecuperarPassword
-from sistema.models import Producto, Vendedor, Sucursal, Venta
+from sistema.forms import ProductoForm, VendedorForm, SucursalForm, VentaForm, OfertaForm, LoginForm, FormCambioPassword, FormRecuperarPassword
+from sistema.models import Producto, Vendedor, Sucursal, Venta, Oferta
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.core.mail import send_mail
 
@@ -256,7 +256,7 @@ def modulo_ventas(request):
 def registrar_venta(request):
 	if request.method == "POST": # Verifica si la solicitud de esta vista lleva consigo el envío de formulario
 		form = VentaForm(request.POST) # Se instancia el formulario pasando como parámetro los datos ingresados
-		vendedor = Vendedor.objects.get(usuario = request.user)
+		vendedor = Vendedor.objects.get(usuario = request.user) # Se obtiene el registro del vendedor para vincular con la nueva venta
 		if form.is_valid(): # Inicia el proceso de validación y verifica si los datos ingresados esten correctos
 			data = form.cleaned_data # Extrae los datos ingresados del formulario a esta variable
 			Venta.objects.create(vendedor = vendedor, sucursal = vendedor.sucursal, producto = data.get("producto"), cantidad = data.get("cantidad"), comentario = data.get("comentario")) # Se registra una nueva venta
@@ -306,6 +306,58 @@ def anular_venta(request, pk):
 		return render(request, "gestion/anularVentaError.html", { "titulo": "Error al anular venta" }) # Retorna la vista con el error generado
 
 
+"""
+Gestión de ofertas
+"""
+@login_required
+def gestion_ofertas(request):
+	pass
+
+@login_required
+def registrar_oferta(request):
+	if request.method == "POST": # Verifica si la solicitud de esta vista lleva consigo el envío de formulario
+		form = OfertaForm(request.POST) # Se instancia el formulario pasando como parámetro los datos ingresados
+		if form.is_valid(): # Inicia el proceso de validación y verifica si los datos ingresados esten correctos
+			data = form.cleaned_data # Extrae los datos ingresados del formulario a esta variable
+			Oferta.objects.create(fechaFin = data.get("fechaFin"), porcentaje = int(data.get("porcentaje")) / 100, producto = data.get("producto"), sucursal = data.get("sucursal")) # Se registra una nueva oferta
+			return redirect("gestion_ofertas") # Redirecciona al menú de gestión de ofertas
+	else: # Se asume que la vista fue solicitada sin envío de formulario
+		form = OfertaForm() # Se instancia un nuevo formulario para ingresar datos del nuevo registro
+	return render(request, "gestion/registrarOferta.html", { "titulo": "Registrar una oferta", "form": form }) # Retorna la vista solicitada
+
+@login_required
+def actualizar_oferta(request, pk):
+	try:
+		oferta = Oferta.objects.get(codigo = pk) # Obtiene la oferta solicitada con el identificador que se pasa como parámetro
+		if request.method == "POST": # Verifica si la solicitud de esta vista lleva consigo el envío de formulario
+			form = OfertaForm(request.POST) # Se instancia el formulario pasando como parámetro los datos ingresados
+			if form.is_valid(): # Inicia el proceso de validación y verifica si los datos ingresados esten correctos
+				data = form.cleaned_data # Extrae los datos ingresados del formulario a esta variable
+				# Se procede la actualización de los datos de la oferta solicitada
+				oferta.fechaFin = data.get("fechaFin")
+				oferta.porcentaje = data.get("porcentaje")
+				oferta.producto = data.get("producto")
+				oferta.sucursal = data.get("sucursal")
+				oferta.save() # Se guardan los cambios realizados
+				return redirect("modulo_ventas") # Redirecciona al módulo de ventas
+		else: # Se asume que la vista fue solicitada sin envío de formulario
+			form = OfertaForm({ "fechaFin": oferta.fechaFin, "porcentaje": oferta.porcentaje, "producto": oferta.producto, "sucursal": oferta.sucursal }) # Se instancia el formulario con los valores del registro a modificar
+	except ObjectDoesNotExist: # En caso de que el registro no exista se asignan en nulo las variables oferta y form
+		oferta = None
+		form = None
+	return render(request, "gestion/actualizarOferta.html", { "titulo": "Actualizar oferta", "form": form, "oferta": oferta }) # Retorna la vista solicitada
+
+@login_required
+def ver_oferta(request, pk):
+	try:
+		oferta = Oferta.objects.get(codigo = pk) # Obtiene la oferta solicitada con el identificador que se pasa como parámetro
+	except: # Esta excepción cubre el error cuando el registro de una oferta no existe
+		oferta = None # Cuando no exista la oferta, se asigna como valor nulo a esta variable
+	return redirect(request, "gestion/verOferta.html", { "oferta": oferta }) # Retorna la vista solicitada
+
+"""
+Recuperación de contraseña
+"""
 def recuperar_password(request):
 	fail = False # Flag que establece si hay equivocaciones en el formulario para mostrar en pantalla
 	if request.method == "POST": # pregunta si es peticion de envio de formulario
