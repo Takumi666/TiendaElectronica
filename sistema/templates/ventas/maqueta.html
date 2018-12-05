@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8"> <!-- Codificación unviersal de la página -->
+		<title>{{ titulo }} || Electronic Solutions</title>
+		<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximun-scale=1.0,minimun-scale=1.0"> <!-- Permite que la página se adapte al tamaño de los dispositivos -->
+		<link rel="stylesheet" type="text/css" href="{% static 'css/ventas.css' %}">
+	</head>
+	<body>
+		<div id="container">
+			<header>
+				<div id="left-side">
+					<div class="logo">
+						<img src="{% static 'images/logo.png' %}" alt="Logo Electronic Solutions">
+					</div>
+				</div>
+				<div id="right-side">
+					<p>Hola, {{ user.first_name }}</p>
+					<a href="{% url 'logout' %}">Cerrar sesión</a>
+				</div>
+			</header>
+
+			<section id="main">
+				{% block content %}{% endblock %}
+			</section>
+
+			<footer>
+				bla
+			</footer>
+		</div>
+	</body>
+</html>

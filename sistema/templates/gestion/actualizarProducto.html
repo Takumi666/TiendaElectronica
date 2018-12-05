@@ -1,7 +1,7 @@
 {% extends "gestion/maqueta.html" %}
 {% block content %}
-<form method="POST">
-	{% if producto %}
+{% if producto %}
+<form method="POST" enctype="multipart/form-data">
 	<h2>Actualizar producto</h2>
 	{% csrf_token %}
 	<table>
@@ -14,9 +14,9 @@
 		{% endfor %}
 	</table>
 	<input type="submit" value="Actualizar">
-	{% else %}
-	<h2>Producto no encontrado</h2>
-	<p>Lo sentimos, el producto que desea actualizar no existe.</p>
-	{% endif %}
 </form>
+{% else %}
+<h2>Producto no encontrado</h2>
+<p>Lo sentimos, el producto que desea actualizar no existe.</p>
+{% endif %}
 {% endblock %}
