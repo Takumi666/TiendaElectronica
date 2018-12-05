@@ -4,12 +4,19 @@ from .models import Producto, Sucursal, Oferta
 CIUDADES = (
 	("Santiago", "Santiago"),
 )
+VIGENTE = (
+	("True", "True"),
+	("False", "False"),
+)
 COMUNAS = (
 	("Ñuñoa", "Ñuñoa"),
 	("Providencia", "Providencia"),
 )
 TIPOS = (
 	("Procesadores", "Procesadores"),
+	("Accesorios", "Accesorios"),
+	("RAM", "RAM"),
+	("Tarjeta de Video", "Tarjeta de Video"),
 )
 
 # Formularios
@@ -50,8 +57,9 @@ class OfertaForm(forms.Form):
 	fechaFin = forms.DateField(label = "Fecha fin", widget = forms.DateInput(attrs = { "id": "fecha-fin" }))
 	fechaInicio = forms.DateField(label = "Fecha Inicio", widget = forms.DateInput(attrs = { "id": "fecha-inicio" }))
 	porcentaje = forms.DecimalField(label = "Porcentaje de descuento", widget = forms.NumberInput(attrs = { "id": "porcentaje" }))
-	producto = forms.ModelChoiceField(label = "Producto", queryset = Oferta.objects.all(), widget = forms.Select(attrs = { "id": "producto" }))
+	producto = forms.ModelChoiceField(label = "Producto", queryset = Producto.objects.all(), widget = forms.Select(attrs = { "id": "producto" }))
 	sucursal = forms.ModelChoiceField(label = "Sucursal", queryset = Sucursal.objects.all(), widget = forms.Select(attrs = { "id": "sucursal" }))
+	vigente = forms.ChoiceField(label = "Vigente", choices = VIGENTE, widget = forms.Select(attrs = { "vignete": "vigente" }))
 
 # Formulario de recuperación de contraseña
 class FormRecuperarPassword(forms.Form):

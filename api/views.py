@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from sistema.models import Producto,Sucursal,Vendedor,Venta
-from .serializers import ProductoSerializer,VentaSerializer,VendedorSerializer,SucursalSerializer
+from sistema.models import Producto,Sucursal,Vendedor,Venta,Oferta
+from .serializers import ProductoSerializer,VentaSerializer,VendedorSerializer,SucursalSerializer,OfertasSerializer
 
 # Create your views here.
 class VistaProducto(APIView):
@@ -32,5 +32,5 @@ class VistaVenta(APIView):
 class VistaOferta(APIView):
 	def get(self, request):
 		oferta = Oferta.objects.all()
-		serializer = VentaSerializer(oferta, many = True)
+		serializer = OfertasSerializer(oferta, many = True)
 		return Response(serializer.data)

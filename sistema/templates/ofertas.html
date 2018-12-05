@@ -1,0 +1,29 @@
+<!-- extiende de la maqueta-->
+{% extends "maqueta.html" %}
+<!--comienza el contenido que se señalo en la maqueta-->
+{% block content %}
+<!--se le informa a django que se cargaran archivos estaticos-->
+{% load staticfiles %}
+
+<h1>Lista de las Mascotas</h1>
+{% if lista %}
+<table>
+    <tr>
+        <th>ID Mascota</th>
+        <th>Nombre Mascota</th>
+        <th>Estado</th>
+        <th>Raza</th>
+    </tr>
+    {% for m in lista.object_list %}
+    <tr>
+        <td>{{ m.codigoMascota }}</td>
+        <td>{{ m.nombreMascota }}</td>
+        <td>{{ m.estado }}</td>
+        <td>{{ m.raza }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+    <h5>No hay Mascotas</h5>
+{% endif %}
+{% endblock %}
