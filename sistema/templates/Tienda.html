@@ -3,13 +3,12 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/tablas.css' %}">
 <div id="jsonresp" style="margin-top: 100px">
-<table id=lista>
+<table id=lista align=center>
 		<tr class="titulos">
 				<th>Nombre</th>
 				<th>Foto </th>
 				<th>Precio</th>
 				<th>Tipo</th>
-				<th>Acciones</th>
 		</tr>
 </table>
 </div>
@@ -22,8 +21,7 @@ $.ajax({
 					 $.each(result, function(i,items){
 									 $("#lista").append("<tr>"+"<td>" + result[i].nombre + "</td>"
 										 + "<td>" +"<img src='" + result[i].foto + "'height='125' width='125' align=right    />"+ "<td>" + result[i].precio + "</td>" +"<td>" + result[i].tipo + "</td>" +
-										 "<td><a href='/gestion/productos/" + result[i].codigo + "'><img src='{% static 'images/view.png' %}' width='50' height='50'></a> <a href='/gestion/productos/actualizar/" + result[i].codigo + "'><img src='{% static 'images/pen.png' %}' width='50' height='50'></a> <a href='/gestion/productos/eliminar/" + result[i].codigo + "'><img src='{% static 'images/trash.png' %}' width='50' height='50'></a></td>" +
-										  "</tr>");
+										 "</tr>");
 							});
 						}});
 				 });
