@@ -1,0 +1,30 @@
+{% extends "maqueta.html" %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/tablas.css' %}">
+<div id="jsonresp" style="margin-top: 100px">
+	<table id=lista>
+		<tr class="titulos">
+			<th>Nombre</th>
+			<th>Direccion </th>
+			<th>Ciudad</th>
+			<th>Comuna</th>
+			<th>Acciones</th>
+		</tr>
+	</table>
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$.ajax({
+			url : "http://localhost:8000/api/sucursales",
+			dataType: "json",
+			success: function(result) {
+				$.each(result, function(i, items) {
+					$("#lista").append("<tr><td>" + result[i].nombre + "</td>"
+					+ "<td>" + result[i].direccion + "</td>" + "<td>" + result[i].ciudad + "</td>" +"<td>" + result[i].comuna + "</td>" +
+					"<a href='/gestion/sucursales/" + result[i].codigo + "'>ver</a><a href='/gestion/sucursales/actualizar/" + result[i].codigo + "'>actualizar</a><a href='/gestion/sucursales/eliminar/" + result[i].codigo + "'>eliminar</a></tr>");
+				});
+			}
+		});
+	});
+</script>
