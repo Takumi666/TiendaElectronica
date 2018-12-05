@@ -239,6 +239,9 @@ def eliminar_sucursal(request, pk):
 """
 Módulo de ventas
 """
+@login_required
+def modulo_ventas(request):
+	return render(request, "ventas/inicio.html", { "titulo": "Módulo de ventas" })
 
 @login_required
 def registrar_venta(request):

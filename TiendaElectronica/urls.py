@@ -17,9 +17,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
 	path("admin/", admin.site.urls),
 	path("api/", include("api.urls")), # Se incluyen los urls de la API
-	path("", include("sistema.urls")), # URLs de la aplicación principal del proyecto
+	path(r"", include("sistema.urls")), # URLs de la aplicación principal del proyecto
+	path('oauth/', include('social_django.urls', namespace='social')),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) # Añade las posibles direcciones de las imágenes de los productos

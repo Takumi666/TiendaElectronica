@@ -1,6 +1,9 @@
+<!-- extiende de la maqueta-->
 {% extends "maqueta.html" %}
+<!--comienza el contenido que se señalo en la maqueta-->
 {% block content %}
-{% load static %}
+<!--se le informa a django que se cargaran archivos estaticos-->
+{% load staticfiles %}
 <div class="loginbox">
 	<form method="POST" class="loginform">
 		{% csrf_token %}
@@ -19,5 +22,5 @@
 		<h5>¿No tienes cuenta? <a href="#">Registrate</a></h5>
 		<h5>¿Olvidaste tu Contraseña? <a href="#">Click Aqui</a></h5>
 	</form>
-</div>
+<p align="center"><a href="{% url 'social:begin' 'facebook' %}"><img src="{% static 'images/fb.png' %}" width="32px" alt="fb">Iniciar con Facebook</a>
 {% endblock %}
