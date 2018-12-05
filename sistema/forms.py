@@ -9,7 +9,7 @@ class ProductoForm(forms.Form):
 	nombre = forms.CharField(label = "Nombre", widget = forms.TextInput(attrs = { "id": "nombre", "placeholder": "Ingrese nombre del producto"}))
 	descripcion = forms.CharField(label = "Descripción", widget = forms.Textarea(attrs = { "id": "descripcion", "placeholder": "Ingrese descripción del producto" }))
 	precio = forms.IntegerField(label = "Precio", widget = forms.NumberInput(attrs = { "id": "precio" }))
-	tipo = forms.ChoiceField(label = "Tipo de producto", choices = [], empty_label = None, widget = forms.Select(attrs = { "id": "tipo" }))
+	tipo = forms.ChoiceField(label = "Tipo de producto", choices = [], widget = forms.Select(attrs = { "id": "tipo" }))
 	foto = forms.ImageField(label = "Foto", required = False, widget = forms.ClearableFileInput(attrs = { "id": "foto" }))
 
 class LoginForm(forms.Form):
