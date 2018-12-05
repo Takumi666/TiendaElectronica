@@ -70,3 +70,20 @@
 .dropdown:hover .dropdown-content {
 	display: block;
 }
+body {
+	margin: auto;
+		width: 80%;
+		height: 100%;
+	}
+	
+	.topbar {
+		width: 90%;
+		position: fixed;
+		text-align: right;
+		color: #fff;
+		font-size: 14px;
+		margin-bottom: 30px;
+		background-color: #3c3c3b;
+		padding: 4px 12px 3px 0;
+		font-family: monospace;
+	}
