@@ -1,4 +1,31 @@
 {% extends "maqueta.html" %}
 {% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/tablas.css' %}">
+<div id="jsonresp" style="margin-top: 100px">
+	<table id=lista>
+		<tr class="titulos">
+			<th>Vendedor</th>
+			<th>Sucursal</th>
+			<th>Producto</th>
+			<th>Cantidad</th>
+			<th>Acciones</th>
+		</tr>
+	</table>
+</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$.ajax({
+			url : "http://localhost:8000/api/ventas",
+			dataType: "json",
+			success: function(result) {
+				$.each(result, function(i, items) {
+					$("#lista").append("<tr><td>" + result[i].sucursal + "</td>"
+					+ "<td>" + result[i].producto + "</td>" + "<td>" + result[i].cantidad + "</td>" +"<td>" + result[i].anulada + "</td></tr>");
+				});
+			}
+		});
+	});
+</script>
 <a href="{% url 'registrar_venta' %}">Realizar Venta </a>
 {% endblock %}
