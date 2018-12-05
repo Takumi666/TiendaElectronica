@@ -52,7 +52,8 @@ def registrar_producto(request):
 			data = form.cleaned_data # Extrae los datos ingresados del formulario a esta variable
 			Producto.objects.create(nombre = data.get("nombre"), descripcion = data.get("descripcion"), precio = data.get("precio"), tipo = data.get("tipo"), foto = data.get("foto")) # Se añade un nuevo registro de producto a la base de datos
 			return redirect("gestion_productos") # Redirecciona al menú de gestión de productos
-	form = ProductoForm()
+	else:
+		form = ProductoForm()
 	return render(request, "registrarProducto.html", { "titulo": "Registrar un producto", "form": form })
 
 def ver_producto(request, pk):
@@ -79,7 +80,8 @@ def actualizar_producto(request, pk):
 					producto.foto = request.FILES["foto"]
 				producto.save() # Se guardan los cambios realizados
 				return redirect("gestion_productos") # Redirecciona al menú de gestión de productos
-		form = ProductoForm({ "nombre": producto.nombre, "descripcion": producto.descripcion, "precio": producto.precio, "foto": producto.foto })
+		else:
+			form = ProductoForm({ "nombre": producto.nombre, "descripcion": producto.descripcion, "precio": producto.precio, "foto": producto.foto })
 	except ObjectDoesNotExist:
 		producto = None
 		form = None
@@ -114,7 +116,8 @@ def registrar_vendedor(request, pk):
 			user = User.objects.create_user(username = (data.get("nombres")[:2] + "." + data.get("apPaterno")).lower(), password = data.get("run")) # Se crea un usuario que se va a asociar con el vendedor
 			Vendedor.objects.create(usuario = user, run = data.get("run"), nombres = data.get("nombres"), apPaterno = data.get("apPaterno"), apMaterno = data.get("apMaterno"), sucursal = data.get("sucursal")) # Se crea un registro del vendedor
 			return redirect("gestion_productos") # Redirecciona al menú de gestión de productos
-	form = VendedorForm()
+	else:
+		form = VendedorForm()
 	return render(request, "registrarProducto.html", { "titulo": "Registrar un producto", "form": form })
 
 @login_required
@@ -143,7 +146,8 @@ def actualizar_vendedor(request, pk):
 				vendedor.sucursal = data.get("sucursal")
 				vendedor.save() # Se guardan los cambios realizados
 				return redirect("gestion_vendedores") # Redirecciona al menú de gestión de vendedores
-		form = VendedorForm()
+		else:
+			form = VendedorForm({ "run": vendedor.run, "nombres": vendedor.nombres, "apPaterno": vendedor.apPaterno, "apMaterno": vendedor.apMaterno, "sucursal": vendedor.sucursal })
 	except ObjectDoesNotExist:
 		vendedor = None
 		form = None
