@@ -1,0 +1,22 @@
+{% extends "maqueta.html" %}
+{% block content %}
+<form method="POST">
+	{% if tienda %}
+	<h2>Actualizar tienda</h2>
+	{% csrf_token %}
+	<table>
+		{% for campo in form %}
+		<tr>
+			<td>{{ campo.label_tag }}</td>
+			<td>{{ campo }}</td>
+			<td>{{ campo.errors }}</td>
+		</tr>
+		{% endblock %}
+	</table>
+	<input type="submit" name="Actualizar">
+	{% else %}
+	<h2>Tienda no encontrada</h2>
+	<p>Lo sentimos, la tienda que desea actualizar no existe.</p>
+	{% endif %}
+</form>
+{% endblock %}

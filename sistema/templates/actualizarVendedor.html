@@ -1,0 +1,22 @@
+{% extends "maqueta.html" %}
+{% block content %}
+<form method="POST">
+	{% if vendedor %}
+	<h2>Actualizar vendedor</h2>
+	{% csrf_token %}
+	<table>
+		{% for campo in form %}
+		<tr>
+			<td>{{ campo.label_tag }}</td>
+			<td>{{ campo }}</td>
+			<td>{{ campo.errors }}</td>
+		</tr>
+		{% endblock %}
+	</table>
+	<input type="submit" name="Actualizar">
+	{% else %}
+	<h2>Vendedor no encontrado</h2>
+	<p>Lo sentimos, el vendedor que desea actualizar no existe.</p>
+	{% endif %}
+</form>
+{% endblock %}
