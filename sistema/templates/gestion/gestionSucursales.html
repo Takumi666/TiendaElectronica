@@ -1,0 +1,17 @@
+{% extends "gestion/maqueta.html" %}
+{% block content %}
+<table>
+	<tr>
+		<th>Código</th>
+		<th>Nombre</th>
+		<th>Ubicación</th>
+	</tr>
+	{% for s in sucursales %}
+	<tr>
+		<td>{{ s.codigo }}</td>
+		<td>{{ s.nombre }}</td>
+		<td>{{ s.direccion }}, {{ s.comuna }}, {{ s.ciudad }}</td>
+	</tr>
+	{% endfor %}
+</table>
+{% endblock %}

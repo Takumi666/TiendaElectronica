@@ -1,0 +1,19 @@
+{% extends "gestion/maqueta.html" %}
+{% block content %}
+<table>
+	<tr>
+		<th>Código</th>
+		<th>RUN</th>
+		<th>Nombre completo</th>
+		<th>Correo electrónico</th>
+	</tr>
+	{% for v in vendedores %}
+	<tr>
+		<td>{{ v.codigo }}</td>
+		<td>{{ v.run }}</td>
+		<td>{{ v.nombres }} {{ v.apPaterno }} {{ v.apMaterno }}</td>
+		<td>{{ v.correo }}</td>
+	</tr>
+	{% endfor %}
+</table>
+{% endblock %}
