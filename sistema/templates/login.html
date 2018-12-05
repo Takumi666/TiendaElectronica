@@ -2,21 +2,22 @@
 {% block content %}
 {% load static %}
 <div class="loginbox">
-<form method="POST" class="loginform">
-	{% csrf_token %}
-	{% if login_fail %}<p>El usuario o contraseña que ingresó no son válidos.</p>{% endif %}
-	<table id="tablalogin">
-		{% for campo in form %}
-		<tr>
-			<td>{{ campo.label_tag }}</td>
-			<td>{{ campo }}</td>
-			<td>{{ campo.errors }}</td>
-		</tr>
-		{% endfor %}
-	</table>
-	<input type="submit" name="Entrar" id="botonenviar">
-	<br>
-	<a>¿No tienes Cuenta?</a><a href="#">Registrate aqui</a>
-</form>
+	<form method="POST" class="loginform">
+		{% csrf_token %}
+		<table>
+				{% for field in form %}
+				<tr>
+						<th>{{ field.label_tag}}</th>
+				</tr>
+				<tr>
+						<td>{{ field }}</td>
+						<td>{{ field.errors }}</td>
+				</tr>
+				{% endfor %}
+		</table>
+		<input  class="boton" type="submit" value="Ingresar">
+		<h5>¿No tienes cuenta? <a href="#">Registrate</a></h5>
+		<h5>¿Olvidaste tu Contraseña? <a href="#">Click Aqui</a></h5>
+	</form>
 </div>
 {% endblock %}
