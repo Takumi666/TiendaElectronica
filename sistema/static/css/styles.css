@@ -8,7 +8,7 @@
 	inherit utiliza el valor del contenedor del elemento
 	*/
 	box-sizing: border-box;
-	
+
 }
 
 @font-face {
@@ -17,27 +17,30 @@
 }
 
 .contenedor {
-	background:#ccc0;
-	width:70%;
+	background:#2B6B75;
+	width:80%;
 	margin:auto;
 	padding-top: 100px;
 	display:flex;
 	flex-flow:row wrap;
+	background-image: url("./banner.jpg")
+
 }
 
 body {
 	background-image: url("./background.jpg");
+	background-size: cover;
 }
 
 .topbar {
 	width: 100%;
-    position: fixed;
-	text-align: right;
-    color: #fff;
-    font-size: 12px;
-    margin-bottom: 30px;
-    background-color: #3c3c3b;
-    padding: 4px 12px 3px 0;
+  position: fixed;
+  text-align: right;
+  color: #fff;
+  font-size: 12px;
+  margin-bottom: 30px;
+  background-color: #3c3c3b;
+  padding: 4px 12px 3px 0;
 }
 
 .topbar ul li {
@@ -52,7 +55,7 @@ body {
     width: 100%;
     color: white;
     text-align: center;
-	
+
 }
 
 header {
@@ -67,15 +70,15 @@ header {
 
 header .logo {
 	color:#fff;
-	font-size:30px;
-	padding: 20px;
-	margin: auto;
+	font-size:10px;
+	padding: 5px;
+	align-items: right;
 }
 
 header .logo img {
-	vertical-align: top;
-	height: 150px;
-    width: 500px;
+
+	height: 90px;
+  width: 270px;
 }
 
 header .logo a {
@@ -102,16 +105,16 @@ form.regprod {
 }
 
 input[type=text] {
-    padding:5px; 
-    border:2px solid #ccc; 
+    padding:5px;
+    border:2px solid #ccc;
     -webkit-border-radius: 5px;
 	border-radius: 5px;
 	width: 190px;
 }
 
 input[type=password] {
-    padding:5px; 
-    border:2px solid #ccc; 
+    padding:5px;
+    border:2px solid #ccc;
     -webkit-border-radius: 5px;
 	border-radius: 5px;
 	width: 190px;
@@ -121,12 +124,12 @@ input[type=password]:focus {
 }
 
 input[type=submit] {
-    padding:5px 15px; 
-    background:#ccc; 
+    padding:5px 15px;
+    background:#ccc;
     border:0 none;
     cursor:pointer;
     -webkit-border-radius: 5px;
-	border-radius: 5px; 
+	border-radius: 5px;
 	width: 100px;
     height: 40px;
     margin: auto;
@@ -144,7 +147,7 @@ tr {
 }
 
 header nav a {
-	background:#00716C;
+	background:#73A2A6;
 	color:#fff;
 	text-align: center;
 	text-decoration: none;
@@ -159,15 +162,15 @@ header nav a:hover {
 }
 
 .main {
-	background:#fff;
+	background:#D7F4EC;
 	padding:80px 20px 80px 20px;
 
 	flex:1 1 70%;/*Establece que sera un 70% del ancho del contenedor
-	1 es el numero máximo de items flex 
+	1 es el numero máximo de items flex
 	1 estabñece que será automático el ajuste, es decir no cambiará su escala en base a los dimensionamientos
-	
+
 	*/
-	
+
 	/*flex:1;*/
 }
 
