@@ -1,21 +1,31 @@
 {% extends "maqueta.html" %}
 {% block content %}
-<table>
-	<tr>
-		<th>Código</th>
-		<th>Producto asociado</th>
-		<th>Fecha fin</th>
-		<th>Acciones</th>
-	</tr>
-	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td>
-			ver
-			del
-			actualizar
-		</td>
-	</tr>
-</table>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/tablas.css' %}">
+<div id="jsonresp" style="margin-top: 100px">
+	<table id=lista>
+		<tr class="titulos">
+			<th>Vigente</th>
+			<th>Producto </th>
+			<th>Porcentaje</th>
+			<th>Sucursal</th>
+			<th>Acciones</th>
+		</tr>
+	</table>
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$.ajax({
+			url : "http://localhost:8000/api/ofertas",
+			dataType: "json",
+			success: function(result) {
+				$.each(result, function(i, items) {
+					$("#lista").append("<tr><td>" + result[i].vigente + "</td>"
+					+ "<td>" + result[i].producto + "</td>" + "<td>" + result[i].porcentaje + "</td>" +"<td>" + result[i].sucursal + "</td></tr>");
+				});
+			}
+		});
+	});
+</script>
+<a href="{% url 'registrar_oferta' %}">Registrar Oferta</a>
 {% endblock %}

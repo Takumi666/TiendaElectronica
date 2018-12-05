@@ -28,3 +28,9 @@ class VistaVenta(APIView):
 		ventas = Venta.objects.all()
 		serializer = VentaSerializer(ventas, many = True)
 		return Response(serializer.data)
+
+class VistaOferta(APIView):
+	def get(self, request):
+		oferta = Oferta.objects.all()
+		serializer = VentaSerializer(oferta, many = True)
+		return Response(serializer.data)

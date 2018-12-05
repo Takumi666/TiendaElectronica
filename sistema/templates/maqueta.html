@@ -42,7 +42,7 @@
 				<button class="dropbtn">Mantenimiento<i class="fa fa-caret-down"></i></button>
 				<div class="dropdown-content">
 					<a href="{% url 'gestion_productos' %}">Gestión de productos</a>
-					<a href="#">Gestión de ofertas</a>
+					<a href="{% url 'gestion_ofertas' %}">Gestión de ofertas</a>
 					{% if es_encargado or user.is_staff %}
 					<a href="{% url 'gestion_vendedores' %}">Gestión de vendedores</a>
 					{% endif %}
