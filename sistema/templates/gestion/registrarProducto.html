@@ -1,4 +1,4 @@
-{% extends "maqueta.html" %}
+{% extends "gestion/maqueta.html" %}
 {% load static %}
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/productos.css' %}">
@@ -14,6 +14,6 @@
 		</tr>
 		{% endfor %}
 	</table>
-	<input type="submit" name="Registrar">
+	<input type="submit" value="Registrar">
 </form>
 {% endblock %}

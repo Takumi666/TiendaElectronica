@@ -27,7 +27,7 @@ class VendedorForm(forms.Form):
 	apMaterno = forms.CharField(label = "Apellido materno", widget = forms.TextInput(attrs = { "id": "apmaterno", "placeholder": "Cisternas" }))
 	sucursal = forms.ModelChoiceField(label = "Tienda", queryset = Sucursal.objects.all(), widget = forms.Select(attrs = { "id": "tienda" }))
 
-class TiendaForm(forms.Form):
+class SucursalForm(forms.Form):
 	nombre = forms.CharField(label = "Nombre", widget = forms.TextInput(attrs = { "id": "nombre", "placeholder": "Santa Isabel"}))
 	ciudad = forms.ChoiceField(label = "Ciudad", choices = CIUDADES, widget = forms.Select(attrs = { "id": "ciudad" }))
 	comuna = forms.ChoiceField(label = "Comuna", choices = COMUNAS, widget = forms.Select(attrs = { "id": "comuna" }))

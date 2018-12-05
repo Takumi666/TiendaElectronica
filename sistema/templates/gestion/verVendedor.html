@@ -1,0 +1,19 @@
+{% extends "gestion/maqueta.html" %}
+{% block content %}
+{% if vendedor %}
+<table>
+	<tr>
+		<th>Código</th>
+		<th>Nombre completo</th>
+		<th>Sucursal asignado</th>
+	</tr>
+	<tr>
+		<td>{{ vendedor.codigo }}</td>
+		<td>{{ vendedor.nombre }} {{ vendedor.apPaterno }} {{ vendedor.apMaterno }}</td>
+		<td>{{ vendedor.sucursal.nombre }}</td>
+	</tr>
+</table>
+{% else %}
+<p>Lo sentimos, el vendedor que desea ver no existe.</p>
+{% endif %}
+{% endblock %}

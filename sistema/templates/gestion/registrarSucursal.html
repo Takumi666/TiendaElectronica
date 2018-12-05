@@ -1,0 +1,17 @@
+{% extends "gestion/maqueta.html" %}
+{% block content %}
+<form method="POST">
+	<h2>Registrar una sucursal</h2>
+	{% csrf_token %}
+	<table>
+		{% for campo in form %}
+		<tr>
+			<td>{{ campo.label_tag }}</td>
+			<td>{{ campo }}</td>
+			<td>{{ campo.errors }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	<input type="submit" value="Registrar">
+</form>
+{% endblock %}

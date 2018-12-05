@@ -1,0 +1,30 @@
+{% extends "gestion/maqueta.html" %}
+{% block content %}
+<table>
+	<tr><td colspan="2">Mantenimiento</td></tr>
+	<tr>
+		<td>Productos</td>
+		<td>{{ cant_productos }}</td>
+	</tr>
+	<tr>
+		<td>Sucursales</td>
+		<td>{{ cant_suc }}</td>
+	</tr>
+	<tr>
+		<td>Ofertas</td>
+		<td>{{ cant_ofertas }}</td>
+	</tr>
+</table>
+
+<table>
+	<tr><th colspan="2">Ventas</th></tr>
+	<tr>
+		<td>Ventas realizadas</td>
+		<td>{{ cant_ventas }}</td>
+	</tr>
+	<tr>
+		<td>Ganancias</td>
+		<td>{{ cant_dinero }}</td>
+	</tr>
+</table>
+{% endblock %}

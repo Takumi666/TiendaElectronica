@@ -1,0 +1,23 @@
+{% extends "gestion/maqueta.html" %}
+{% block content %}
+{% if tienda %}
+<table>
+	<tr>
+		<th>Código</th>
+		<th>Nombre</th>
+		<th>Ubicación</th>
+		<th>Correo electrónico</th>
+		<th>Teléfono</th>
+	</tr>
+	<tr>
+		<td>{{ tienda.codigo }}</td>
+		<td>{{ tienda.nombre }}</td>
+		<td>{{ tienda.direccion }}, {{ tienda.comuna }}, {{ tienda.ciudad }}</td>
+		<td>{{ tienda.correo }}</td>
+		<td>{{ tienda.telefono }}</td>
+	</tr>
+</table>
+{% else %}
+<p>Lo sentimos, la tienda que desea ver no existe.</p>
+{% endif %}
+{% endblock %}
