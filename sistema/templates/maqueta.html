@@ -14,7 +14,11 @@
 	<div class="topbar">
 	<div class="topcontainer">
 	<ul style="margin-right: 10px">
-	<li><a href="#">Iniciar Sesion</a></li>
+	{% if not user.is_authenticated %}
+	<li><a href="{% url 'login' %}">Iniciar Sesion</a></li>
+	{% else %}
+	<a href="{% url 'logout'%}">Salir</a>
+	{% endif %}
 	<li><a>Contacto</a></li>
 	<li><a><img src="{% static 'images/facebook.png' %}"></a></li>
 	<li><a><img src="{% static 'images/twitter.png' %}"></a></li>
