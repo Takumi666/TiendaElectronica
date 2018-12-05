@@ -3,7 +3,9 @@ from .models import Producto, Sucursal
 
 CIUDADES = []
 COMUNAS = []
-TIPOS = [ "Procesadores", ]
+TIPOS = (
+	("Procesadores", "Procesadores"),
+)
 
 # Formularios
 class VentaForm(forms.Form):
