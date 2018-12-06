@@ -41,6 +41,9 @@ class Venta(models.Model):
 
 class Oferta(models.Model):
 	codigo = models.AutoField(primary_key = True)
+	fechaInicio = models.DateField(auto_now_add = True)
+	fechaFin = models.DateField()
+	vigente = models.BooleanField(default = True)
 	porcentaje = models.DecimalField(max_digits = 3, decimal_places = 2)
 	producto = models.ForeignKey(Producto, on_delete = models.CASCADE)
 	sucursal = models.ForeignKey(Sucursal, on_delete = models.CASCADE)
