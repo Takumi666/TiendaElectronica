@@ -323,7 +323,7 @@ def recuperar_password(request):
 				# se envía un correo con el enlace para cambiar de contraseña
 				send_mail(
 					"Recuperación de contraseña para su cuenta de Mis Perris",
-					"Estimado usuario,\n\nUsted ha solicitado recuperar la contraseña de su cuenta de Mis Perris. Para cambiar la contraseña diríjase al siguiente link: %s://%s/%s&%s" % (request.scheme, request.get_host() + "/cuentas/cambiarpass", token, user.username),
+					"Estimado usuario,\n\nUsted ha solicitado recuperar la contraseña de su cuenta de Electronic Solutions. Para cambiar la contraseña diríjase al siguiente link: %s://%s/%s&%s" % (request.scheme, request.get_host() + "/cuentas/cambiarpass", token, user.username),
 					"donotreplymisperris@gmail.com",
 					[ user.email ],
 					fail_silently = True
