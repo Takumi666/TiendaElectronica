@@ -9,3 +9,10 @@ Integrantes:
 * Jorge Fuica
 * Francisco Ramírez
 * Manuel Yávar
+
+
+Credenciales
+
+user: raul710
+
+pass: 123
