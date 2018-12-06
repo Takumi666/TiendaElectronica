@@ -1,8 +1,11 @@
 {% extends "maqueta.html" %}
+{% load static %}
+{% block imports %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/tablas.css' %}">
+{% endblock %}
+
 {% block content %}
 {% if oferta %}
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/tablas.css' %}">
 <table>
 	<tr>
 		<th>Código</th>

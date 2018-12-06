@@ -1,0 +1,81 @@
+/* Reglas para cada formulario del sitio web */
+form {
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	width: 70%;
+}
+
+.tableform {
+	width: 100%;
+}
+
+.tableform th, .tableform td {
+	padding: 4px;
+}
+
+.tableform th {
+	text-align: right;
+}
+
+/* Se definen las reglas para todos los campos de un formulario */
+.campo {
+	background-color: white;
+	border: 2px solid #00D0D0;
+	border-radius: 16px; /* Bordes romados */
+	font-size: x-large; /* Tamaño grande de letra */
+	overflow: hidden; /* Permite que los elementos dentro de un campo no se sobresalgan */
+	outline: none; /* Desaparece las líneas azules alrededor de los campos que dejan los navegadores */
+	padding: 8px;
+	transition-duration: 400ms; /* Duración del efecto de transición */
+	width: 100%;
+}
+
+/* Se aplica este bloque cuando el cursor esté encima de un campo */
+.campo:hover {
+	border-color: #00E0E0; /* Cambia el color del borde */
+}
+
+/* Estas reglas se aplican cuando se está interactuando con un campo */
+.campo:focus {
+	border-color: #00C0C0; /* Cambia el color del borde */
+}
+
+/* Reglas para todos las listas desplegables */
+.combobox {
+	background: url("images/down_normal.png") no-repeat right white; /* Reemplaza el botón nativo para abrir la lista por uno personalizado */
+	background-size: 35px; /* Se define el tamaño del botón personalizado */
+	display: inline-block; /* permite que el botón personalizado permanezca en el mismo lugar que el texto */
+	-webkit-appearance: none; /* Elimina el botón nativo del combobox */
+}
+
+/* Se definen los tamaños para los elementos de las listas desplegables */
+.combobox optgroup, option {
+	font-size: medium;
+}
+
+/* Se definen los atributos para los botones */
+.boton {
+	background-color: #00D0D0;
+	border: none; /* Sin borde */
+	color: white;
+	margin: 4px auto;
+	max-width: 500px; /* A medida de haya más ancho de pantalla el botón tendrá máximo 500 píxeles de ancho */
+	width: 70%;
+}
+
+/* Se aplica esto cuando el cursor esté encima de un botón */
+.boton:hover {
+	background-color: #00C0C0;
+}
+
+/* Se aplica esto cuando se hace clic en un botón */
+.boton:active {
+	background-color: royalblue;
+}
+
+/* Esto permite que el botón spinner desaparezca de los campos tipo fecha,
+   dejando sólo el botón desplegable para seleccionar la fecha */
+[type="date"]::-webkit-inner-spin-button {
+	display: none;
+}

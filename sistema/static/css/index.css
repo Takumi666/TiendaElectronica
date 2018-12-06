@@ -4,6 +4,7 @@
 	padding-top: 100px;
 	display:flex;
 	flex-flow:row wrap;
+	max-width:1000px;
 }
 .cont2{
   width:50%;
@@ -13,7 +14,7 @@
 	flex-flow:row wrap;
 }
 
-.izquierda{
+.cont1 .izquierda{
   background: #73A2A6;
   width:70%;
 	margin:30px;
@@ -21,7 +22,7 @@
 	display:flex;
 	flex-flow:row wrap;
 }
-.derecha{
+.cont1 .derecha{
   background: #D7F4EC;
   width:30%;
 	margin:auto;
@@ -29,7 +30,7 @@
 	display:flex;
 	flex-flow:row wrap;
 }
-.abajo{
+.cont2 .abajo{
   background: #96D1B8;
   width:100%;
   margin:auto;

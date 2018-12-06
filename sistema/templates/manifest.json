@@ -1,0 +1,16 @@
+{
+  "name": "MyApp",
+  "short_name": "MyApp",
+  "description": "My Progressive Web App",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff",
+  "theme_color": "#000",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "250x70",
+      "type": "image/png"
+    }
+  ]
+}

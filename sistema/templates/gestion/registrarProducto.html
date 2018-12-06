@@ -1,19 +1,22 @@
 {% extends "maqueta.html" %}
 {% load static %}
+{% block imports %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
+{% endblock %}
+
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/productos.css' %}">
-<form class="regprod" method="POST" enctype="multipart/form-data">
+<form method="POST" enctype="multipart/form-data">
 	<h2>Registrar un producto</h2>
 	{% csrf_token %}
-	<table>
+	<table class="tableform">
 		{% for campo in form %}
 		<tr>
-			<td>{{ campo.label_tag }}</td>
-			<td>{{ campo }}</td>
-			<td>{{ campo.errors }}</td>
+			<th width="20%">{{ campo.label_tag }}</th>
+			<td width="60%">{{ campo }}</td>
+			<td width="20%">{{ campo.errors }}</td>
 		</tr>
 		{% endfor %}
 	</table>
-	<input type="submit" value="Registrar">
+	<input type="submit" class="campo boton" value="Registrar">
 </form>
 {% endblock %}

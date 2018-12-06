@@ -1,19 +1,8 @@
 * {
-	margin: 0;
-	padding: 0;
-	/*se define como se calcularán los cuadrados en base al ancho y al alto con respecto al padding
-	content-box indica que todo será sin considerar padding o bordes
-	border-box indica que se incluyen en los calculos bordes y padding
-	initial se fija el valor por defecto, depende del dispositivo y el navegador
-	inherit utiliza el valor del contenedor del elemento
-	*/
+	margin: 0px;
+	padding: 0px;
 	box-sizing: border-box;
-
-}
-
-@font-face {
-    font-family: 'Fortnite'; /*a name to be used later*/
-    src: url('../images/Fuente.otf'); /*URL to font*/
+	font-family: "SF Pro Display", "Calibri", "Arial";
 }
 
 .contenedor {
@@ -42,7 +31,6 @@ body {
   background-color: #3c3c3b;
   padding: 4px 12px 3px 0;
   font-family: monospace;
-  
 }
 
 .topbar a {
@@ -62,7 +50,7 @@ body {
     width: 100%;
     color: white;
     text-align: center;
-	display: none;
+
 }
 
 header {
@@ -127,42 +115,6 @@ form.regprod {
     flex-flow: column;
     text-align: center;
     padding: 50px;
-}
-
-input[type=text] {
-    padding:5px;
-    border:2px solid #ccc;
-    -webkit-border-radius: 5px;
-	border-radius: 5px;
-	width: 190px;
-}
-
-input[type=password] {
-    padding:5px;
-    border:2px solid #ccc;
-    -webkit-border-radius: 5px;
-	border-radius: 5px;
-	width: 190px;
-}
-input[type=password]:focus {
-    border-color:#333;
-}
-
-input[type=submit] {
-    padding:5px 15px;
-    background:#ccc;
-    border:0 none;
-    cursor:pointer;
-    -webkit-border-radius: 5px;
-	border-radius: 5px;
-	width: 100px;
-    height: 40px;
-    margin: auto;
-}
-
-table#tablalogin {
-	margin: auto;
-	padding: 10px;
 }
 
 

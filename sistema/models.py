@@ -11,6 +11,9 @@ class Sucursal(models.Model):
 	telefono = models.IntegerField()
 	correo = models.EmailField()
 
+	def __str__(self):
+		return self.nombre
+
 class Vendedor(models.Model):
 	codigo = models.AutoField(primary_key = True)
 	usuario = models.OneToOneField(User, unique = True, on_delete = models.DO_NOTHING)
@@ -28,6 +31,9 @@ class Producto(models.Model):
 	precio = models.IntegerField()
 	tipo = models.CharField(max_length = 20)
 	foto = models.ImageField(upload_to = "productos", blank = True, null = True)
+
+	def __str__(self):
+		return self.nombre
 
 class Venta(models.Model):
 	codigo = models.AutoField(primary_key = True)
@@ -51,3 +57,10 @@ class Oferta(models.Model):
 class ListaProducto(models.Model):
 	sucursal = models.ForeignKey(Sucursal, on_delete = models.DO_NOTHING)
 	producto = models.ForeignKey(Producto, on_delete = models.DO_NOTHING)
+"""
+class Notificacion(models.Model):
+	codigo = models.AutoField(primary_key = True)
+	fecha = models.DateField()
+	mensaje = models.TextField()
+	sucursal = models.ForeignKey(Sucursal, on_delete = models.CASCADE)
+"""

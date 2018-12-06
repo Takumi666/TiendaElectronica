@@ -1,8 +1,10 @@
 {% extends "maqueta.html" %}
-{% block content %}
-{% if tienda %}
 {% load static %}
+{% block imports %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/tablas.css' %}">
+{% endblock %}
+{% block content %}
+{% if sucursal %}
 <table>
 	<tr>
 		<th>Código</th>
@@ -12,14 +14,14 @@
 		<th>Teléfono</th>
 	</tr>
 	<tr>
-		<td>{{ tienda.codigo }}</td>
-		<td>{{ tienda.nombre }}</td>
-		<td>{{ tienda.direccion }}, {{ tienda.comuna }}, {{ tienda.ciudad }}</td>
-		<td>{{ tienda.correo }}</td>
-		<td>{{ tienda.telefono }}</td>
+		<td>{{ sucursal.codigo }}</td>
+		<td>{{ sucursal.nombre }}</td>
+		<td>{{ sucursal.direccion }}, {{ sucursal.comuna }}, {{ sucursal.ciudad }}</td>
+		<td>{{ sucursal.correo }}</td>
+		<td>{{ sucursal.telefono }}</td>
 	</tr>
 </table>
 {% else %}
-<p>Lo sentimos, la tienda que desea ver no existe.</p>
+<p>Lo sentimos, la sucursal que desea ver no existe.</p>
 {% endif %}
 {% endblock %}

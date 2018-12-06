@@ -141,7 +141,7 @@ def registrar_vendedor(request):
 		form = VendedorForm(request.POST) # Se instancia el formulario pasando como parámetro los datos ingresados
 		if form.is_valid(): # Inicia el proceso de validación y verifica si los datos ingresados esten correctos
 			data = form.cleaned_data # Extrae los datos ingresados del formulario a esta variable
-			user = User.objects.create_user(username = (data.get("nombres")[:2] + "." + data.get("apPaterno")).lower(), password = data.get("run")) # Se crea un usuario que se va a asociar con el vendedor
+			user = User.objects.create_user(username = (data.get("nombres")[:2] + "." + data.get("apPaterno")).lower(), password = data.get("run"), first_name = data.get("nombres").split(" ")[0], last_name = data.get("apPaterno")) # Se crea un usuario que se va a asociar con el vendedor
 			Vendedor.objects.create(usuario = user, run = data.get("run"), nombres = data.get("nombres"), apPaterno = data.get("apPaterno"), apMaterno = data.get("apMaterno"), sucursal = data.get("sucursal")) # Se crea un registro del vendedor
 			return redirect("gestion_vendedores") # Redirecciona al menú de gestión de vendedores
 	else: # Se asume que la vista fue solicitada sin envío de formulario
@@ -172,6 +172,10 @@ def actualizar_vendedor(request, pk):
 				vendedor.apPaterno = data.get("apPaterno")
 				vendedor.apMaterno = data.get("apMaterno")
 				vendedor.sucursal = data.get("sucursal")
+				user = vendedor.usuario
+				user.first_name = data.get("nombres").split(" ")[0]
+				user.last_name = data.get("apPaterno")
+				user.save() # Se guardan los cambios realizados
 				vendedor.save() # Se guardan los cambios realizados
 				return redirect("gestion_vendedores") # Redirecciona al menú de gestión de vendedores
 		else: # Se asume que la vista fue solicitada sin envío de formulario
@@ -264,7 +268,13 @@ Módulo de ventas
 """
 @login_required
 def modulo_ventas(request):
-	return render(request, "ventas/inicio.html", { "titulo": "Módulo de ventas" })
+	ventas = None
+	vendedor = Vendedor.objects.get(usuario = request.user)
+	if request.user.is_staff and vendedor.encargado:
+		ventas = Venta.objects.all()
+	else:
+		ventas = Venta.objects.filter(vendedor = vendedor)
+	return render(request, "ventas/inicio.html", { "titulo": "Módulo de ventas", "ventas": ventas })
 
 @login_required
 def registrar_venta(request):
@@ -352,10 +362,11 @@ def actualizar_oferta(request, pk):
 				oferta.porcentaje = data.get("porcentaje")
 				oferta.producto = data.get("producto")
 				oferta.sucursal = data.get("sucursal")
+				oferta.vigente = data.get("vigente")
 				oferta.save() # Se guardan los cambios realizados
 				return redirect("modulo_ventas") # Redirecciona al módulo de ventas
 		else: # Se asume que la vista fue solicitada sin envío de formulario
-			form = OfertaForm({ "fechaFin": oferta.fechaFin, "porcentaje": oferta.porcentaje, "producto": oferta.producto, "sucursal": oferta.sucursal }) # Se instancia el formulario con los valores del registro a modificar
+			form = OfertaForm({ "fechaFin": oferta.fechaFin, "porcentaje": oferta.porcentaje, "producto": oferta.producto, "sucursal": oferta.sucursal, "vigente": oferta.vigente }) # Se instancia el formulario con los valores del registro a modificar
 	except ObjectDoesNotExist: # En caso de que el registro no exista se asignan en nulo las variables oferta y form
 		oferta = None
 		form = None

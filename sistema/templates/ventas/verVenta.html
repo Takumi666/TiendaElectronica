@@ -1,0 +1,33 @@
+{% extends "maqueta.html" %}
+{% load static %}
+{% block imports %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/tablas.css' %}">
+{% endblock %}
+{% block content %}
+{% if venta %}
+<table>
+	<tr>
+		<th>Código</th>
+		<th>Vendedor</th>
+		<th>Sucursal</th>
+		<th>Fecha hora</th>
+		<th>Producto</th>
+		<th>Cantidad</th>
+		<th>Comentario</th>
+		<th>Anulada</th>
+	</tr>
+	<tr>
+		<td>{{ venta.codigo }}</td>
+		<td>{{ venta.vendedor.nombres }} {{ venta.vendedor.apPaterno }}</td>
+		<td>{{ venta.sucursal.nombre }}</td>
+		<td>{{ venta.fechaHora }}</td>
+		<td>{{ venta.producto.nombre }}</td>
+		<td>{{ venta.cantidad }}</td>
+		<td>{{ venta.comentario }}</td>
+		<td>{{ venta.anulada }}</td>
+	</tr>
+</table>
+{% else %}
+<p>Lo sentimos, la venta que desea ver no existe.</p>
+{% endif %}
+{% endblock %}
