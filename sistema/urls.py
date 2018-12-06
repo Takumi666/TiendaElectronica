@@ -10,7 +10,7 @@ urlpatterns = [
 
 	# Ventas
 	url(r"^ventas$", views.modulo_ventas, name = "modulo_ventas"),
-	url(r"^ventas/registrar$" views.registrar_venta, name = "registrar_venta"),
+	url(r"^ventas/registrar$" ,views.registrar_venta, name = "registrar_venta"),
 	url(r"^ventas/(?P<pk>[0-9]+)$", views.ver_venta, name = "ver_venta"),
 	url(r"^ventas/actualizar/(?P<pk>[0-9]+)$", views.actualizar_venta, name = "actualizar_venta"),
 	url(r"^ventas/anular/(?P<pk>[0-9]+)$", views.anular_venta, name = "anular_venta"),

@@ -51,6 +51,7 @@ body {
 .topbar ul li {
     display: inline;
 	margin-left: 10px;
+	text-decoration: none;
 }
 
 .down {
