@@ -1,18 +1,29 @@
 {% extends "maqueta.html" %}
 {% block content %}
-<table>
-	<tr>
-		<th>Código</th>
-		<th>Nombre</th>
-		<th>Ubicación</th>
-	</tr>
-	{% for s in sucursales %}
-	<tr>
-		<td>{{ s.codigo }}</td>
-		<td>{{ s.nombre }}</td>
-		<td>{{ s.direccion }}, {{ s.comuna }}, {{ s.ciudad }}</td>
-	</tr>
-	{% endfor %}
+<div id="jsonresp" style="margin-top: 100px">
+<table id=lista>
+		<tr class="titulos">
+				<th>Nombre</th>
+				<th>Direccion </th>
+				<th>Ciudad</th>
+				<th>Comuna</th>
+		</tr>
+
 </table>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+$.ajax({
+				 url : "http://localhost:8000/Api/Mascotas",
+				 dataType: "json",
+				 success : function (result) {
+					 $.each(result, function(i,items){
+									 $("#lista").append("<tr>"+"<td>" + result[i].nombre + "</td>"
+										 + "<td>" + result[i].direccion + "</td>" + "<td>" + result[i].ciudad + "</td>" +"<td>" + result[i].comuna + "</td>" +
+										  "</tr>");
+							});
+						}});
+				 });
+</script>
 <a href="{% url 'registrar_sucursal' %}">Registrar sucursal</a>
 {% endblock %}
