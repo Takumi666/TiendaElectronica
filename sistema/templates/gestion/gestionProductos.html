@@ -1,27 +1,30 @@
 {% extends "maqueta.html" %}
 {% block content %}
-<table>
-	<tr>
-		<th>Foto</th>
-		<th>Código</th>
-		<th>Nombre</th>
-		<th>Descripción</th>
-		<th>Precio</th>
-		<th>Tipo</th>
-		<th>Acciones</th>
-	</tr>
-	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td>
-			ver
-			del
-			actualizar
-		</td>
-	</tr>
+
+<div id="jsonresp" style="margin-top: 100px">
+<table id=lista>
+		<tr class="titulos">
+				<th>Nombre</th>
+				<th>Foto </th>
+				<th>Precio</th>
+				<th>Tipo</th>
+		</tr>
+
 </table>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+$.ajax({
+				 url : "http://localhost:8000/api/productos",
+				 dataType: "json",
+				 success : function (result) {
+					 $.each(result, function(i,items){
+									 $("#lista").append("<tr>"+"<td>" + result[i].nombre + "</td>"
+										 + "<td>" + result[i].foto + "</td>" + "<td>" + result[i].precio + "</td>" +"<td>" + result[i].tipo + "</td>" +
+										  "</tr>");
+							});
+						}});
+				 });
+</script>
+<a href="{% url 'registrar_producto' %}">Registrar Productos</a>
 {% endblock %}
