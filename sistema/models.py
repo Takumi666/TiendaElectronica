@@ -43,6 +43,7 @@ class Oferta(models.Model):
 	codigo = models.AutoField(primary_key = True)
 	porcentaje = models.DecimalField(max_digits = 3, decimal_places = 2)
 	producto = models.ForeignKey(Producto, on_delete = models.CASCADE)
+	sucursal = models.ForeignKey(Sucursal, on_delete = models.CASCADE)
 
 class ListaProducto(models.Model):
 	sucursal = models.ForeignKey(Sucursal, on_delete = models.DO_NOTHING)
