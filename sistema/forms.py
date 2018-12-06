@@ -46,6 +46,10 @@ class LoginForm(forms.Form):
 	username = forms.CharField(label = "Nombre de usuario", widget = forms.TextInput(attrs = { "id": "username", "placeholder": "Ingrese nombre de usuario" }))
 	password = forms.CharField(label = "Contraseña", widget = forms.PasswordInput(attrs = { "id": "password", "placeholder": "Ingrese contraseña" }))
 
+class OfertaForm(forms.Form):
+	fechaFin = forms.DateField(label = "Fecha fin", widget = forms.DateInput(attrs = { "id": "fecha-fin" }))
+	porcentaje = forms.DecimalField(label = "Porcentaje de descuento", widget = forms.NumberInput(attrs = { "id": "porcentaje" }))
+
 # Formulario de recuperación de contraseña
 class FormRecuperarPassword(forms.Form):
 	correo = forms.EmailField(label = "Correo electrónico", max_length = 30, widget = forms.EmailInput(attrs = { "id": "correo", "class": "campo", "placeholder": "Ingrese correo" }))

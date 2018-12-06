@@ -1,0 +1,27 @@
+{% extends "maqueta.html" %}
+{% block content %}
+{% if oferta %}
+<table>
+	<tr>
+		<th>Código</th>
+		<th>Producto</th>
+		<th>Precio normal</th>
+		<th>Precio oferta</th>
+		<th>% Descuento</th>
+		<th>Fecha fin</th>
+		<th>Sucursal</th>
+	</tr>
+	<tr>
+		<td>{{ oferta.codigo }}</td>
+		<td>{{ oferta.producto.nombre }}</td>
+		<td>{{ oferta.producto.precio }}</td>
+		<td>{{ oferta.producto.precio * oferta.porcentaje }}</td>
+		<td>{{ oferta.porcentaje }}</td>
+		<td>{{ oferta.fechaFin }}</td>
+		<td>{{ oferta.sucursal.nombre }}</td>
+	</tr>
+</table>
+{% else %}
+<p>Lo sentimos, la oferta que desea ver no existe.</p>
+{% endif %}
+{% endblock %}
