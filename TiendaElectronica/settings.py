@@ -37,6 +37,7 @@ INSTALLED_APPS = [
 	"api.apps.ApiConfig", # API para la manipulación de datos
 	"sistema.apps.SistemaConfig", # Aplicación principal del proyecto
 	'social_django', #Login con Facebook
+	'pwa', # Dependencia para la Progressive Web App
 ]
 
 MIDDLEWARE = [
@@ -147,3 +148,5 @@ SOCIAL_AUTH_PIPELINE = (
 )
 
 LOGIN_URL = '/cuentas/login'
+#Ubicacion del Service Worker
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'Sistema/static/js', 'serviceworker.js') # Ubicación del JavaScript para arrancar el Service Worker para PWA

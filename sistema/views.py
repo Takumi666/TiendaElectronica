@@ -8,6 +8,7 @@ from sistema.forms import ProductoForm, VendedorForm, SucursalForm, VentaForm, O
 from sistema.models import Producto, Vendedor, Sucursal, Venta, Oferta
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.core.mail import send_mail
+import numpy
 
 global user_log
 # Create your views here.
@@ -422,3 +423,7 @@ def cambiar_password(request, token, user):
 		else:
 			contexto = { **contexto, **{ "user": True } }
 	return render(request, "cambiarPassword.html", contexto)
+	
+def base_layout(request,postid):
+	template="maqueta.html"
+	return render(request,template)
