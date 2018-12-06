@@ -32,7 +32,6 @@
 			<img src="{% static 'images/logo.png' %}" alt="Logo Electronic Solutions">
 			<img src="{% static 'images/logo_gestion.png' %}" alt="Logo de Gestionando" height="60" width="60" align=right>
 		</div>
-		{% if es_encargado %}
 		<nav class="navbar">
 				<a href="{% url 'menu_gestion'%}">Gestión</a>
 			<div class="dropdown">
@@ -46,7 +45,6 @@
 			</div>
 			<a href="#">Ventas</a>
 		</nav>
-		{% endif %}
 	</div>
   {% else %}
 	<div class="contenedor">

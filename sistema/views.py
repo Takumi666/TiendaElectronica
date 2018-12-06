@@ -1,7 +1,7 @@
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User,Vendedor
+from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
 from sistema.forms import ProductoForm, VendedorForm, SucursalForm, VentaForm, LoginForm
@@ -15,7 +15,7 @@ def index(request):
 def es_encargado():
 	if user.encargado:
 		return true
-	else
+	else:
 		return false;
 # Inicio de sesión
 def iniciar_sesion(request):
