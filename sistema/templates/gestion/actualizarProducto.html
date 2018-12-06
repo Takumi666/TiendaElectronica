@@ -1,19 +1,24 @@
 {% extends "maqueta.html" %}
+{% load static %}
+{% block imports %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
+{% endblock %}
+
 {% block content %}
 {% if producto %}
 <form method="POST" enctype="multipart/form-data">
 	<h2>Actualizar producto</h2>
 	{% csrf_token %}
-	<table>
+	<table class="tableform">
 		{% for campo in form %}
 		<tr>
-			<td>{{ campo.label_tag }}</td>
-			<td>{{ campo }}</td>
-			<td>{{ campo.errors }}</td>
+			<th width="20%">{{ campo.label_tag }}</th>
+			<td width="60%">{{ campo }}</td>
+			<td width="20%">{{ campo.errors }}</td>
 		</tr>
 		{% endfor %}
 	</table>
-	<input type="submit" value="Actualizar">
+	<input type="submit" class="campo boton" value="Actualizar">
 </form>
 {% else %}
 <h2>Producto no encontrado</h2>

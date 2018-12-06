@@ -1,8 +1,11 @@
 {% extends "maqueta.html" %}
-{% block content %}
 {% load static %}
+{% block imports %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/tablas.css' %}">
-<div id="jsonresp" style="margin-top: 100px">
+{% endblock %}
+
+{% block content %}
+<div id="jsonresp" style="margin-top: 10px">
 	<table id=lista>
 		<tr class="titulos">
 			<th>Vigente</th>

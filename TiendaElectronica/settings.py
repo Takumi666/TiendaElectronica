@@ -149,4 +149,4 @@ SOCIAL_AUTH_PIPELINE = (
 
 LOGIN_URL = '/cuentas/login'
 #Ubicacion del Service Worker
-PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'Sistema/static/js', 'serviceworker.js') # Ubicación del JavaScript para arrancar el Service Worker para PWA
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'sistema/static/js', 'serviceworker.js') # Ubicación del JavaScript para arrancar el Service Worker para PWA

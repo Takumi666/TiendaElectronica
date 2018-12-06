@@ -1,24 +1,23 @@
-<!-- extiende de la maqueta-->
 {% extends "maqueta.html" %}
-<!--comienza el contenido que se señalo en la maqueta-->
+{% load static %}
+{% block imports %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
+{% endblock %}
+
 {% block content %}
-<!--se le informa a django que se cargaran archivos estaticos-->
-{% load staticfiles %}
 <div class="loginbox" align="center">
 	<form method="POST" class="loginform">
 		{% csrf_token %}
-		<table>
-				{% for field in form %}
-				<tr>
-						<th>{{ field.label_tag}}</th>
-				</tr>
-				<tr>
-						<td>{{ field }}</td>
-						<td>{{ field.errors }}</td>
-				</tr>
-				{% endfor %}
+		<table class="tableform">
+			{% for field in form %}
+			<tr>
+				<th width="20%">{{ field.label_tag }}</th>
+				<td width="60%">{{ field }}</td>
+				<td width="20%">{{ field.errors }}</td>
+			</tr>
+			{% endfor %}
 		</table>
-		<p align="center"><input  class="boton" type="submit" value="Ingresar">
+		<p align="center"><input  class="campo boton" type="submit" value="Ingresar">
 		<p align="center">¿No tienes cuenta? <a href="#">Registrate</a>
 		<p align="center">¿Olvidaste tu Contraseña? <a href="http://localhost:8000/cuentas/recuperarpass/">Click Aqui</a>
 	</form>
