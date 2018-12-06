@@ -20,7 +20,7 @@
         {% if m.codigo == i.producto_id %}
           <tr>
               <td>{{ m.nombre }}</td>
-              <td><img src={{ m.foto }} ></img></td>
+              <td><img src={{ m.foto.url }} width="200px"  alt="" ></img></td>
               <td>{{ m.descripcion }}</td>
               <td>{{ m.precio }}</td>
               <td>{{ i.porcentaje }}</td>
