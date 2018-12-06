@@ -322,7 +322,7 @@ def recuperar_password(request):
 				token = token_generator.make_token(user)
 				# se envía un correo con el enlace para cambiar de contraseña
 				send_mail(
-					"Recuperación de contraseña para su cuenta de Mis Perris",
+					"Recuperación de contraseña para su cuenta de Electronic Solutions",
 					"Estimado usuario,\n\nUsted ha solicitado recuperar la contraseña de su cuenta de Electronic Solutions. Para cambiar la contraseña diríjase al siguiente link: %s://%s/%s&%s" % (request.scheme, request.get_host() + "/cuentas/cambiarpass", token, user.username),
 					"donotreplymisperris@gmail.com",
 					[ user.email ],
