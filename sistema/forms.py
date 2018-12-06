@@ -1,5 +1,5 @@
 from django import forms
-from .models import Producto, Sucursal
+from .models import Producto, Sucursal, Oferta
 
 CIUDADES = (
 	("Santiago", "Santiago"),
@@ -32,7 +32,7 @@ class VendedorForm(forms.Form):
 	nombres = forms.CharField(label = "Nombres", widget = forms.TextInput(attrs = { "id": "nombres", "placeholder": "Juan Armando" }))
 	apPaterno = forms.CharField(label = "Apellido paterno", widget = forms.TextInput(attrs = { "id": "appaterno", "placeholder": "Pérez" }))
 	apMaterno = forms.CharField(label = "Apellido materno", widget = forms.TextInput(attrs = { "id": "apmaterno", "placeholder": "Cisternas" }))
-	sucursal = forms.ModelChoiceField(label = "Tienda", queryset = Sucursal.objects.all(), widget = forms.Select(attrs = { "id": "tienda" }))
+	sucursal = forms.ModelChoiceField(label = "Sucursal", queryset = Sucursal.objects.all(), widget = forms.Select(attrs = { "id": "sucursal" }))
 
 class SucursalForm(forms.Form):
 	nombre = forms.CharField(label = "Nombre", widget = forms.TextInput(attrs = { "id": "nombre", "placeholder": "Santa Isabel"}))
@@ -49,6 +49,8 @@ class LoginForm(forms.Form):
 class OfertaForm(forms.Form):
 	fechaFin = forms.DateField(label = "Fecha fin", widget = forms.DateInput(attrs = { "id": "fecha-fin" }))
 	porcentaje = forms.DecimalField(label = "Porcentaje de descuento", widget = forms.NumberInput(attrs = { "id": "porcentaje" }))
+	producto = forms.ModelChoiceField(label = "Producto", queryset = Oferta.objects.all(), widget = forms.Select(attrs = { "id": "producto" }))
+	sucursal = forms.ModelChoiceField(label = "Sucursal", queryset = Sucursal.objects.all(), widget = forms.Select(attrs = { "id": "sucursal" }))
 
 # Formulario de recuperación de contraseña
 class FormRecuperarPassword(forms.Form):
