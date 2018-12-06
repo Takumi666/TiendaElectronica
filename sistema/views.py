@@ -319,7 +319,7 @@ def registrar_oferta(request):
 		form = OfertaForm(request.POST) # Se instancia el formulario pasando como parámetro los datos ingresados
 		if form.is_valid(): # Inicia el proceso de validación y verifica si los datos ingresados esten correctos
 			data = form.cleaned_data # Extrae los datos ingresados del formulario a esta variable
-			Oferta.objects.create(fechaFin = data.get("fechaFin"), porcentaje = int(data.get("porcentaje")) / 100, producto = data.get("producto"), sucursal = data.get("sucursal")) # Se registra una nueva oferta
+			Oferta.objects.create(fechaFin = data.get("fechaFin"), porcentaje = int(data.get("porcentaje")) / 100, producto = data.get("producto"), sucursal = data.get("sucursal"),fechaInicio = data.get("fechaInicio"),vigente=data.get("vigente")) # Se registra una nueva oferta
 			return redirect("gestion_ofertas") # Redirecciona al menú de gestión de ofertas
 	else: # Se asume que la vista fue solicitada sin envío de formulario
 		form = OfertaForm() # Se instancia un nuevo formulario para ingresar datos del nuevo registro

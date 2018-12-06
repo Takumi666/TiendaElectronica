@@ -48,6 +48,7 @@ class LoginForm(forms.Form):
 
 class OfertaForm(forms.Form):
 	fechaFin = forms.DateField(label = "Fecha fin", widget = forms.DateInput(attrs = { "id": "fecha-fin" }))
+	fechaInicio = forms.DateField(label = "Fecha Inicio", widget = forms.DateInput(attrs = { "id": "fecha-inicio" }))
 	porcentaje = forms.DecimalField(label = "Porcentaje de descuento", widget = forms.NumberInput(attrs = { "id": "porcentaje" }))
 	producto = forms.ModelChoiceField(label = "Producto", queryset = Oferta.objects.all(), widget = forms.Select(attrs = { "id": "producto" }))
 	sucursal = forms.ModelChoiceField(label = "Sucursal", queryset = Sucursal.objects.all(), widget = forms.Select(attrs = { "id": "sucursal" }))
