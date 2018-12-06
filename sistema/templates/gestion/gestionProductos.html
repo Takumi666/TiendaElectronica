@@ -22,6 +22,7 @@ $.ajax({
 					 $.each(result, function(i,items){
 									 $("#lista").append("<tr>"+"<td>" + result[i].nombre + "</td>"
 										 + "<td>" +"<img src='" + result[i].foto + "'height='125' width='125' align=right    />"+ "<td>" + result[i].precio + "</td>" +"<td>" + result[i].tipo + "</td>" +
+										 "<td><a href='/gestion/productos/" + result[i].codigo + "'>ver</a><a href='/gestion/productos/actualizar/" + result[i].codigo + "'>actualizar</a><a href='/gestion/productos/eliminar/" + result[i].codigo + "'>eliminar</a></td>" +
 										  "</tr>");
 							});
 						}});
