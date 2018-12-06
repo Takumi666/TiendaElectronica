@@ -9,10 +9,16 @@ from sistema.models import Producto, Vendedor, Sucursal, Venta
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.core.mail import send_mail
 
+global user_log
 # Create your views here.
 def index(request):
 	return render(request, "index.html", { "titulo": "Inicio" }) # Retorna la vista solicitada
 
+def es_encargado():
+	if user.encargado:
+		return true
+	else:
+		return false;
 # Inicio de sesión
 def iniciar_sesion(request):
 	if request.user.is_authenticated: # Verifica si el usuario tiene la sesión abierta
@@ -26,6 +32,7 @@ def iniciar_sesion(request):
 			user = authenticate(username = data.get("username"), password = data.get("password")) # Proceso de autenticación de credenciales
 			if user: # Verifica si el usuario es válido
 				login(request, user) # En caso de que sea válido se abre una sesión para dicho usuario ingresado
+				user_log=user
 				return redirect("index") # Redirecciona a la página principal
 			login_fail = True # Si no son válidas las credenciales, este estado pasa a ser verdadero
 	form = LoginForm() # Se instancia el formulario

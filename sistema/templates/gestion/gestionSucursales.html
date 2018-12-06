@@ -1,4 +1,4 @@
-{% extends "gestion/maqueta.html" %}
+{% extends "maqueta.html" %}
 {% block content %}
 <table>
 	<tr>
@@ -14,4 +14,5 @@
 	</tr>
 	{% endfor %}
 </table>
+<a href="{% url 'registrar_sucursal' %}">Registrar sucursal</a>
 {% endblock %}

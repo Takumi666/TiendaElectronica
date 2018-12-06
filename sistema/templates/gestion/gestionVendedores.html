@@ -1,5 +1,6 @@
-{% extends "gestion/maqueta.html" %}
+{% extends "maqueta.html" %}
 {% block content %}
+{% load static %}
 <table>
 	<tr>
 		<th>Código</th>
@@ -16,4 +17,5 @@
 	</tr>
 	{% endfor %}
 </table>
+<a href="{% url 'registrar_vendedor' %}">Registrar Vendedor</a>
 {% endblock %}
