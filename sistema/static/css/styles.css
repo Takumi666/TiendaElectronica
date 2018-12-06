@@ -37,10 +37,15 @@ body {
   position: fixed;
   text-align: right;
   color: #fff;
-  font-size: 12px;
+  font-size: 14px;
   margin-bottom: 30px;
   background-color: #3c3c3b;
   padding: 4px 12px 3px 0;
+  font-family: monospace;
+}
+
+.topbar a {
+    color: white;
 }
 
 .topbar ul li {
