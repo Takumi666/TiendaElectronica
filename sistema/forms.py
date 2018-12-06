@@ -1,8 +1,13 @@
 from django import forms
 from .models import Producto, Sucursal
 
-CIUDADES = ["Santiago"]
-COMUNAS = ["Ñuñoa","Providencia"]
+CIUDADES = (
+	("Santiago", "Santiago"),
+)
+COMUNAS = (
+	("Ñuñoa", "Ñuñoa"),
+	("Providencia", "Providencia"),
+)
 TIPOS = (
 	("Procesadores", "Procesadores"),
 )
