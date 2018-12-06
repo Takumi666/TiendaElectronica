@@ -40,3 +40,12 @@ class SucursalForm(forms.Form):
 class LoginForm(forms.Form):
 	username = forms.CharField(label = "Nombre de usuario", widget = forms.TextInput(attrs = { "id": "username", "placeholder": "Ingrese nombre de usuario" }))
 	password = forms.CharField(label = "Contraseña", widget = forms.PasswordInput(attrs = { "id": "password", "placeholder": "Ingrese contraseña" }))
+
+# Formulario de recuperación de contraseña
+class FormRecuperarPassword(forms.Form):
+	correo = forms.EmailField(label = "Correo electrónico", max_length = 30, widget = forms.EmailInput(attrs = { "id": "correo", "class": "campo", "placeholder": "Ingrese correo" }))
+
+# Formulario de cambio de contraseña
+class FormCambioPassword(forms.Form):
+	nuevaPassword = forms.CharField(label = "Nueva contraseña", widget = forms.PasswordInput(attrs = { "id": "nuevapass", "class": "campo", "placeholder": "Ingrese nueva contraseña" }))
+	confirmPassword = forms.CharField(label = "Confirmar contraseña", widget = forms.PasswordInput(attrs = { "id": "confirmpass", "class": "campo", "placeholder": "Confirme nueva contraseña" }))

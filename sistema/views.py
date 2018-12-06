@@ -4,8 +4,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
-from sistema.forms import ProductoForm, VendedorForm, SucursalForm, VentaForm, LoginForm
+from sistema.forms import ProductoForm, VendedorForm, SucursalForm, VentaForm, LoginForm, FormCambioPassword, FormRecuperarPassword
 from sistema.models import Producto, Vendedor, Sucursal, Venta
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.core.mail import send_mail
 
 # Create your views here.
 def index(request):
@@ -295,3 +297,57 @@ def anular_venta(request, pk):
 		return redirect("modulo_ventas") # Redirecciona al módulo de ventas
 	except ObjectDoesNotExist: # En caso de algún error se procede a mostrar la página describiendo lo ocurrido
 		return render(request, "gestion/anularVentaError.html", { "titulo": "Error al anular venta" }) # Retorna la vista con el error generado
+
+
+def recuperar_password(request):
+	fail = False # Flag que establece si hay equivocaciones en el formulario para mostrar en pantalla
+	if request.method == "POST": # pregunta si es peticion de envio de formulario
+		form = FormRecuperarPassword(request.POST) # se pasan los datos ingresados al formulario
+		if form.is_valid(): # pregunta si los datos ingresados son validos
+			data = form.cleaned_data # extrae los datos del formulario
+			try:
+				user = User.objects.get(email = data.get("correo")) # obtiene el usuario con el correo como parámetro
+			except ObjectDoesNotExist:# en caso de que el usuario no exista
+				user = None
+			if user:
+				# se generan tokens para autenticar solicitudes de recuperación de contraseñas
+				token_generator = PasswordResetTokenGenerator()
+				token = token_generator.make_token(user)
+				# se envía un correo con el enlace para cambiar de contraseña
+				send_mail(
+					"Recuperación de contraseña para su cuenta de Mis Perris",
+					"Estimado usuario,\n\nUsted ha solicitado recuperar la contraseña de su cuenta de Mis Perris. Para cambiar la contraseña diríjase al siguiente link: %s://%s/%s&%s" % (request.scheme, request.get_host() + "/cuentas/cambiarpass", token, user.username),
+					"donotreplymisperris@gmail.com",
+					[ user.email ],
+					fail_silently = True
+				)
+				return render(request, "recuperarPasswordExito.html", { "titulo": "Solicitud de recuperación de contraseña recibida" })
+			fail = True
+	else:
+		form = FormRecuperarPassword()
+	return render(request, "recuperarPassword.html", { "titulo": "Recuperar contraseña", "form": form, "fail": fail })
+
+def cambiar_password(request, token, user):
+	contexto = { "titulo": "Cambio de contraseña" }
+	try:
+		usuario = User.objects.get(username = user) # obtiene el usuario con el username como parametro
+	except ObjectDoesNotExist: # en caso de que el usuario no exista
+		usuario = None
+	if usuario:
+		# se verifican si los tokens que se pasan en la url son auténticos
+		token_generator = PasswordResetTokenGenerator() # Se instancia un generador
+		if token_generator.check_token(usuario, token): # pregunta si el token es válido
+			if request.method == "POST": # Pregunta si es una petición de envío de formulario
+				form = FormCambioPassword(request.POST) # Se pasan los datos ingresados al formulario
+				if form.is_valid(): # Pregunta si los datos son válidos
+					data = form.cleaned_data # Extrae los datos ingresados del formulario
+					if data.get("nuevaPassword") == data.get("confirmPassword"): # verifica si las contraseñas son iguales
+						usuario.set_password(data.get("nuevaPassword")) # Se cambia la contraseña
+						usuario.save() # guarda los cambios
+						return render(request, "cambiarPasswordHecho.html", { "titulo": "Cambio de contraseña exitoso" })
+			else:
+				form = FormCambioPassword() # Se instancia un nuevo formulario de cambio de contraseña
+			contexto = { **contexto, **{ "user": True, "form": form } }
+		else:
+			contexto = { **contexto, **{ "user": True } }
+	return render(request, "cambiarPassword.html", contexto)
