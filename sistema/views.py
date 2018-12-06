@@ -240,7 +240,7 @@ def eliminar_sucursal(request, pk):
 	try:
 		sucursal = Sucursal.objects.get(codigo = pk) # Obtiene la sucursal solicitada con el identificador que se pasa como parámetro
 		if sucursal: # Verifica que la sucursal existe
-			producto.delete() # Se elimina la sucursal solicitada
+			sucursal.delete() # Se elimina la sucursal solicitada
 		return redirect("gestion_sucursales") # Redirecciona al menú de gestión de sucursales
 	except ObjectDoesNotExist: # En caso de algún error se procede a mostrar la página describiendo lo ocurrido
 		return render(request, "gestion/eliminarSucursalError.html", { "titulo": "Error al eliminar sucursal" }) # Retorna la vista con el error generado
@@ -311,7 +311,7 @@ Gestión de ofertas
 """
 @login_required
 def gestion_ofertas(request):
-	pass
+	return render(request, "gestion/gestionOfertas.html", { "titulo": "Gestión de ofertas" })
 
 @login_required
 def registrar_oferta(request):
@@ -354,6 +354,16 @@ def ver_oferta(request, pk):
 	except: # Esta excepción cubre el error cuando el registro de una oferta no existe
 		oferta = None # Cuando no exista la oferta, se asigna como valor nulo a esta variable
 	return redirect(request, "gestion/verOferta.html", { "oferta": oferta }) # Retorna la vista solicitada
+
+@login_required
+def eliminar_oferta(request, pk):
+	try:
+		oferta = Oferta.objects.get(codigo = pk) # Obtiene la oferta solicitada con el identificador que se pasa como parámetro
+		if oferta: # Verifica que la oferta existe
+			oferta.delete() # Se elimina la oferta solicitada
+		return redirect("gestion_ofertas") # Redirecciona al menú de gestión de ofertas
+	except ObjectDoesNotExist: # En caso de algún error se procede a mostrar la página describiendo lo ocurrido
+		return render(request, "gestion/eliminarOfertaError.html", { "titulo": "Error al eliminar oferta" }) # Retorna la vista con el error generado
 
 """
 Recuperación de contraseña

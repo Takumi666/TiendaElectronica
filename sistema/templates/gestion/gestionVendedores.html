@@ -2,29 +2,28 @@
 {% block content %}
 {% load static %}
 <div id="jsonresp" style="margin-top: 100px">
-<table id=lista>
+	<table id=lista>
 		<tr class="titulos">
-				<th>Nombres</th>
-				<th>Apellido </th>
-				<th>Encargado</th>
-				<th>Sucursal</th>
+			<th>Nombres</th>
+			<th>Apellido</th>
+			<th>Encargado</th>
+			<th>Sucursal</th>
 		</tr>
-
-</table>
+	</table>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){
-$.ajax({
-				 url : "http://localhost:8000/api/vendedores",
-				 dataType: "json",
-				 success : function (result) {
-					 $.each(result, function(i,items){
-									 $("#lista").append("<tr>"+"<td>" + result[i].nombres + "</td>"
-										 + "<td>" + result[i].apPaterno + "</td>" + "<td>" + result[i].encargado + "</td>" +"<td>" + result[i].sucursal + "</td>" +
-										  "</tr>");
-							});
-						}});
-				 });
+	$(document).ready(function() {
+		$.ajax({
+			url : "http://localhost:8000/api/vendedores",
+			dataType: "json",
+			success: function(result) {
+				$.each(result, function(i, items) {
+					$("#lista").append("<tr><td>" + result[i].nombres + "</td>"
+					+ "<td>" + result[i].apPaterno + "</td>" + "<td>" + result[i].encargado + "</td>" +"<td>" + result[i].sucursal + "</td></tr>");
+				});
+			}
+		});
+	});
 </script>
 <a href="{% url 'registrar_vendedor' %}">Registrar Vendedor</a>
 {% endblock %}

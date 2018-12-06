@@ -39,9 +39,9 @@ urlpatterns = [
 	url(r"^gestion/vendedores/eliminar/(?P<pk>[0-9]+)$", views.eliminar_vendedor, name = "eliminar_vendedor"),
 
 	# Ofertas
-	# url(r"^gestion/ofertas$", views.gestion_ofertas, name = "gestion_ofertas"),
-	# url(r"^gestion/ofertas/registrar$", views.registrar_oferta, name = "registrar_oferta"),
-	# url(r"^gestion/ofertas/(?P<pk>[0-9]+)$", views.ver_oferta, name = "ver_oferta"),
-	# url(r"^gestion/ofertas/actualizar/(?P<pk>[0-9]+)$", views.actualizar_oferta, name = "actualizar_oferta"),
-	# url(r"^gestion/ofertas/eliminar/(?P<pk>[0-9]+)$", views.eliminar_oferta, name = "eliminar_oferta"),
+	url(r"^gestion/ofertas$", views.gestion_ofertas, name = "gestion_ofertas"),
+	url(r"^gestion/ofertas/registrar$", views.registrar_oferta, name = "registrar_oferta"),
+	url(r"^gestion/ofertas/(?P<pk>[0-9]+)$", views.ver_oferta, name = "ver_oferta"),
+	url(r"^gestion/ofertas/actualizar/(?P<pk>[0-9]+)$", views.actualizar_oferta, name = "actualizar_oferta"),
+	url(r"^gestion/ofertas/eliminar/(?P<pk>[0-9]+)$", views.eliminar_oferta, name = "eliminar_oferta"),
 ]
