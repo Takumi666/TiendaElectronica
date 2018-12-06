@@ -22,7 +22,7 @@
 				$.each(result, function(i, items) {
 					$("#lista").append("<tr><td>" + result[i].nombres + "</td>"
 					+ "<td>" + result[i].apPaterno + "</td>" + "<td>" + result[i].encargado + "</td>" +"<td>" + result[i].sucursal + "</td>" +
-					"<a href='/gestion/vendedores/" + result[i].codigo + "'>ver</a><a href='/gestion/vendedores/actualizar/" + result[i].codigo + "'>actualizar</a><a href='/gestion/vendedores/eliminar/" + result[i].codigo + "'>eliminar</a></tr>");
+					"<td><a href='/gestion/vendedores/" + result[i].codigo + "'>ver</a><a href='/gestion/vendedores/actualizar/" + result[i].codigo + "'>actualizar</a><a href='/gestion/vendedores/eliminar/" + result[i].codigo + "'>eliminar</a></td></tr>");
 				});
 			}
 		});
