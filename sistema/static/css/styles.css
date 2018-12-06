@@ -100,6 +100,24 @@ header nav {
 	flex-wrap:wrap;
 	align-items:center;
 }
+header nav a {
+	background:#73A2A6;
+	color:#fff;
+	text-align: center;
+	text-decoration: none;
+	padding:10px;
+	/* Flexbox */
+	flex-grow:1; /*Especifica el numero maximo de items flex que pueden adecuarse en una zona*/
+}
+.desplg{
+	display: none;
+}
+header nav a:hover {
+	background: #00b2aa;
+}
+ .padre:hover > ul {
+	 display:block;
+}
 
 form.regprod {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -152,20 +170,9 @@ tr {
 	padding: 10px;
 }
 
-header nav a {
-	background:#73A2A6;
-	color:#fff;
-	text-align: center;
-	text-decoration: none;
-	padding:10px;
 
-	/* Flexbox */
-	flex-grow:1; /*Especifica el numero maximo de items flex que pueden adecuarse en una zona*/
-}
 
-header nav a:hover {
-	background: #00b2aa;
-}
+
 
 .main {
 	background:#D7F4EC;

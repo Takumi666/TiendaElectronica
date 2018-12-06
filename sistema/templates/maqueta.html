@@ -17,6 +17,7 @@
 				{% if not user.is_authenticated %}
 				<li><a href="{% url 'login' %}">Iniciar Sesion</a></li>
 				{% else %}
+				<a href="{% url 'gestion_productos'%}">Gestión</a>
 				<a href="{% url 'logout'%}">Salir</a>
 				{% endif %}
 				<li><a>Contacto</a></li>
@@ -25,22 +26,47 @@
 			</ul>
 		</div>
 	</div>
-
-
+	{% if user.is_authenticated %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/gestion.css' %}">
+	<div id="left-side">
+		<div class="logo">
+			<img src="{% static 'images/logo.png' %}" alt="Logo Electronic Solutions">
+			<img src="{% static 'images/logo_gestion.png' %}" alt="Logo de Gestionando" height="60" width="60" align=right>
+		</div>
+		<nav class="navbar">
+			<a href="{% url 'menu_gestion' %}">Inicio</a>
+			<div class="dropdown">
+				<button class="dropbtn">Mantenimiento<i class="fa fa-caret-down"></i></button>
+				<div class="dropdown-content">
+					<a href="{% url 'gestion_productos' %}">Gestión de productos</a>
+					<a href="{% url 'gestion_sucursales' %}">Gestión de sucursales</a>
+					<a href="#">Gestión de ofertas</a>
+					<a href="{% url 'gestion_vendedores' %}">Gestión de vendedores</a>
+				</div>
+			</div>
+			<a href="#">Ventas</a>
+		</nav>
+	</div>
+  {% else %}
 	<div class="contenedor">
 		<header>
 			<div class="logo">
 				<img src="{% static 'images/logo.png' %}" width="150" alt="150">
-				<a href="#">LoboFactory</a>
 			</div>
 
 			<nav>
 				<a href="{% url 'index'%}">Inicio</a>
-				<a href="#">Tienda</a>
+				<a class="padre" href="#">Tienda</a>
+					<ul class="desplg">
+						<a href="#">Tienda</a>
+						<a href="#">Tienda</a>
+					</ul>
 				<a href="#">Ofertas</a>
 				<a href="#">Buscar</a>
 			</nav>
 		</header>
+	{% endif %}
+
 
 		<div class="main">
 			{% block content %}{% endblock %}

@@ -1,3 +1,6 @@
+#left-side {
+	padding-top: 40px;
+}
 /* Barra de navegación */
 .navbar {
 	overflow: hidden;
@@ -23,7 +26,7 @@
 
 /* Botón desplegable */
 .dropdown .dropbtn {
-	font-size: 16px; 
+	font-size: 16px;
 	border: none;
 	outline: none;
 	color: white;
